@@ -1,0 +1,31 @@
+//
+// Prefix header for all source files of the 'Code Prometheus' target in the 'Code Prometheus' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+
+#import "CPLog.h"
+#import "CPMapUtil.h"
+#import "CPBaseModel.h"
+#import "CPResource.h"
+#import "CPUserDefaults.h"
+#import "CPFile.h"
+#import "UITableView+IndexPath.h"
+#import "CPDB.h"
+#import "CPServer.h"
+#import "CPIOS.h"
+#import "NSString+CP_Aleph.h"
+#import "CPUI.h"
+#import "UIImage+fixOrientation.h"
+
+#endif
+
+

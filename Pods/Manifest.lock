@@ -1,0 +1,106 @@
+PODS:
+  - ABCalendarPicker (1.1.2)
+  - ASIHTTPRequest (1.8.1):
+    - ASIHTTPRequest/ASIWebPageRequest
+    - ASIHTTPRequest/CloudFiles
+    - ASIHTTPRequest/Core
+    - ASIHTTPRequest/S3
+  - ASIHTTPRequest/ASIWebPageRequest (1.8.1):
+    - ASIHTTPRequest/Core
+  - ASIHTTPRequest/CloudFiles (1.8.1):
+    - ASIHTTPRequest/Core
+  - ASIHTTPRequest/Core (1.8.1):
+    - Reachability
+  - ASIHTTPRequest/S3 (1.8.1):
+    - ASIHTTPRequest/Core
+  - CocoaLumberjack (1.6.5.1):
+    - CocoaLumberjack/Core
+    - CocoaLumberjack/Extensions
+  - CocoaLumberjack/Core (1.6.5.1)
+  - CocoaLumberjack/Extensions (1.6.5.1):
+    - CocoaLumberjack/Core
+  - DACircularProgress (2.2.0)
+  - FDTake (0.1)
+  - HPGrowingTextView (1.0.1)
+  - JSONKit-NoWarning (1.1)
+  - KSCrash (0.0.1)
+  - Masonry (0.3.1)
+  - MBProgressHUD (0.8)
+  - MWPhotoBrowser (1.1.4):
+    - DACircularProgress
+    - MBProgressHUD
+    - MWPhotoBrowser/ARC
+    - SDWebImage (~> 3.5)
+  - MWPhotoBrowser/ARC (1.1.4):
+    - DACircularProgress
+    - MBProgressHUD
+    - SDWebImage (~> 3.5)
+  - NSDate-Extensions (0.0.1)
+  - NYXImagesKit (2.3)
+  - OpenUDID (1.0.0)
+  - PinYin4Objc (1.1.1)
+  - PopoverView (0.0.1)
+  - Reachability (3.1.1)
+  - RHAddressBook (1.0.4)
+  - SDWebImage (3.5.1):
+    - SDWebImage/Core
+  - SDWebImage/Core (3.5.1)
+  - TDBadgedCell (2.4.1)
+  - TDSemiModal (1.0.0)
+  - TPKeyboardAvoiding (1.2.3)
+  - TWMessageBarManager (1.3.0)
+
+DEPENDENCIES:
+  - ABCalendarPicker (= 1.1.2)
+  - ASIHTTPRequest (= 1.8.1)
+  - CocoaLumberjack (= 1.6.5.1)
+  - FDTake (= 0.1)
+  - HPGrowingTextView (= 1.0.1)
+  - JSONKit-NoWarning (= 1.1)
+  - KSCrash (= 0.0.1)
+  - Masonry (= 0.3.1)
+  - MBProgressHUD (= 0.8)
+  - MWPhotoBrowser (= 1.1.4)
+  - NSDate-Extensions (= 0.0.1)
+  - NYXImagesKit (= 2.3)
+  - OpenUDID (= 1.0.0)
+  - PinYin4Objc (= 1.1.1)
+  - PopoverView (= 0.0.1)
+  - Reachability (= 3.1.1)
+  - RHAddressBook (= 1.0.4)
+  - SDWebImage (= 3.5.1)
+  - TDBadgedCell (= 2.4.1)
+  - TDSemiModal (from `git://github.com/623637646/TDSemiModal`)
+  - TPKeyboardAvoiding (= 1.2.3)
+  - TWMessageBarManager (= 1.3.0)
+
+EXTERNAL SOURCES:
+  TDSemiModal:
+    :git: git://github.com/623637646/TDSemiModal
+
+SPEC CHECKSUMS:
+  ABCalendarPicker: a7057f2007592ea4688a9c259ab223460852b8a0
+  ASIHTTPRequest: 34f0d02cc3e31e87591c8d9bda78697a29b92035
+  CocoaLumberjack: 17803afbade3126a377d32b8d23367264b44ced6
+  DACircularProgress: 659d6fd11b5fc099c13ba9350239d9dca324916a
+  FDTake: 1b8a6647bf132df32868b00b423f5ab8b938e00d
+  HPGrowingTextView: fd77b93b9096dd1493a312c8856810b652b04dcc
+  JSONKit-NoWarning: 5b8c7dbf2969926b714727288bb2a9d24a176a0c
+  KSCrash: 7e0d9dd99e22cc513741ddc94c391e86dc959254
+  Masonry: 9d43e954fbe6e903002acd063e11aa648800a310
+  MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
+  MWPhotoBrowser: 9c4ed9535cb7eec0c1eac11354866eb46dea13c3
+  NSDate-Extensions: b78c2b3f363acdcd7b5d2547a6bef6656cd8ff70
+  NYXImagesKit: bdcd82ed61e55ad95a2e95675c2f6b84f039c423
+  OpenUDID: 13ab988776ef38dca1e2e799e961448cf83a8111
+  PinYin4Objc: c1fbf5805994e0b3f9aac99464403b01db28ece4
+  PopoverView: 571c17ebd5f0c20570e1f12ca1800bd56e1b6dc3
+  Reachability: be4883bb93f31e38266ae3365e5600a317aae735
+  RHAddressBook: c4f11ae22ba3b2a3152e0dd619e015862bf02d7c
+  SDWebImage: a408b548a634b792372e07e753fc1079aff5032a
+  TDBadgedCell: 16b3256427b4bfc61e7822f0c3eebc6b71cad60d
+  TDSemiModal: 2edc2ef115a04b280865bac2e5afd6c6277a886a
+  TPKeyboardAvoiding: 17995aaa6db26ac2a9fa8714a86509c5888f0392
+  TWMessageBarManager: 82343e43813dba4e66e75bc73d265a361a661eed
+
+COCOAPODS: 0.29.0

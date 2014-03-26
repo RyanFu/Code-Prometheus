@@ -1,0 +1,1 @@
+../../KSCrash/KSCrash/KSCrash/KSCrashReportStore.h

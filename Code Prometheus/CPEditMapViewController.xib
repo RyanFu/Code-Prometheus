@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CPEditMapViewController">
+            <connections>
+                <outlet property="searchDisplayController" destination="T9C-dQ-vtD" id="hjk-rW-sfS"/>
+                <outlet property="view" destination="1" id="3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Oxb-CY-wad" customClass="CPSearchBar">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="cdO-R2-ZMT"/>
+                    </connections>
+                </searchBar>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Oxb-CY-wad" secondAttribute="trailing" id="1WS-Ak-ThR"/>
+                <constraint firstItem="Oxb-CY-wad" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="XN0-F0-EcX"/>
+                <constraint firstItem="Oxb-CY-wad" firstAttribute="top" secondItem="1" secondAttribute="top" id="kVS-mx-0sP"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+        <searchDisplayController id="T9C-dQ-vtD">
+            <connections>
+                <outlet property="delegate" destination="-1" id="GDk-dR-5Li"/>
+                <outlet property="searchBar" destination="Oxb-CY-wad" id="diz-Vg-ip6"/>
+                <outlet property="searchContentsController" destination="-1" id="YZF-fO-Knv"/>
+                <outlet property="searchResultsDataSource" destination="-1" id="39h-EM-7u4"/>
+                <outlet property="searchResultsDelegate" destination="-1" id="BBv-a9-0aJ"/>
+            </connections>
+        </searchDisplayController>
+        <navigationItem id="oKm-Ou-95e">
+            <connections>
+                <outlet property="rightBarButtonItem" destination="BMm-XP-qnq" id="07M-4m-FSc"/>
+            </connections>
+        </navigationItem>
+        <barButtonItem systemItem="save" id="BMm-XP-qnq">
+            <connections>
+                <action selector="saveButtonClick:" destination="-1" id="Oew-N0-MEt"/>
+            </connections>
+        </barButtonItem>
+    </objects>
+</document>

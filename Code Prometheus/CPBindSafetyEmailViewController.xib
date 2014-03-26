@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CPBindSafetyEmailViewController">
+            <connections>
+                <outlet property="emailTextField" destination="DAH-UI-vEO" id="KAU-80-O80"/>
+                <outlet property="view" destination="1" id="3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7OX-CN-2lI" customClass="TPKeyboardAvoidingScrollView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V0G-EO-QMf">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fgP-iK-hak">
+                                    <rect key="frame" x="40" y="210" width="240" height="148"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCu-TK-0d5">
+                                            <rect key="frame" x="20" y="20" width="200" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cp_email_0.png" translatesAutoresizingMaskIntoConstraints="NO" id="gR5-gG-Rl7">
+                                                    <rect key="frame" x="0.0" y="0.0" width="54" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </imageView>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="邮箱名称" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DAH-UI-vEO">
+                                                    <rect key="frame" x="54" y="0.0" width="146" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="gR5-gG-Rl7" firstAttribute="top" secondItem="RCu-TK-0d5" secondAttribute="top" id="7ur-wA-MeS"/>
+                                                <constraint firstAttribute="height" constant="44" id="82M-IX-Ece"/>
+                                                <constraint firstItem="gR5-gG-Rl7" firstAttribute="leading" secondItem="RCu-TK-0d5" secondAttribute="leading" id="C5l-0n-GKo"/>
+                                                <constraint firstAttribute="bottom" secondItem="DAH-UI-vEO" secondAttribute="bottom" id="X9z-l9-UAY"/>
+                                                <constraint firstItem="DAH-UI-vEO" firstAttribute="top" secondItem="RCu-TK-0d5" secondAttribute="top" id="gdX-ta-5Mc"/>
+                                                <constraint firstAttribute="trailing" secondItem="DAH-UI-vEO" secondAttribute="trailing" id="ih3-7S-D3k"/>
+                                                <constraint firstItem="DAH-UI-vEO" firstAttribute="leading" secondItem="gR5-gG-Rl7" secondAttribute="trailing" id="mjL-PV-XVv"/>
+                                                <constraint firstAttribute="bottom" secondItem="gR5-gG-Rl7" secondAttribute="bottom" id="tnj-dc-NG2"/>
+                                            </constraints>
+                                        </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ie-Gj-foC">
+                                            <rect key="frame" x="20" y="84" width="200" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.2494376743" green="0.71740238059999994" blue="0.72036431759999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <state key="normal" title="验证">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="verify:" destination="-1" eventType="touchUpInside" id="KBL-h7-AZO"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.87211017219999998" green="0.87211017219999998" blue="0.87211017219999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="RCu-TK-0d5" firstAttribute="top" secondItem="fgP-iK-hak" secondAttribute="top" constant="20" symbolic="YES" id="8K7-ae-QEN"/>
+                                        <constraint firstAttribute="trailing" secondItem="RCu-TK-0d5" secondAttribute="trailing" constant="20" symbolic="YES" id="FXG-qv-M5A"/>
+                                        <constraint firstAttribute="bottom" secondItem="2Ie-Gj-foC" secondAttribute="bottom" constant="20" id="PRc-ba-Q75"/>
+                                        <constraint firstItem="2Ie-Gj-foC" firstAttribute="top" secondItem="RCu-TK-0d5" secondAttribute="bottom" constant="20" id="ez9-AR-44f"/>
+                                        <constraint firstItem="2Ie-Gj-foC" firstAttribute="height" secondItem="RCu-TK-0d5" secondAttribute="height" id="kX8-5N-vt6"/>
+                                        <constraint firstItem="2Ie-Gj-foC" firstAttribute="width" secondItem="RCu-TK-0d5" secondAttribute="width" id="sVF-ze-gBx"/>
+                                        <constraint firstItem="2Ie-Gj-foC" firstAttribute="centerX" secondItem="RCu-TK-0d5" secondAttribute="centerX" id="uhJ-j7-ZW7"/>
+                                        <constraint firstItem="RCu-TK-0d5" firstAttribute="leading" secondItem="fgP-iK-hak" secondAttribute="leading" constant="20" symbolic="YES" id="yqB-U0-8fc"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="centerY" secondItem="fgP-iK-hak" secondAttribute="centerY" id="XAw-gI-iMt"/>
+                                <constraint firstAttribute="trailing" secondItem="fgP-iK-hak" secondAttribute="trailing" constant="40" id="pqQ-Fw-yML"/>
+                                <constraint firstItem="fgP-iK-hak" firstAttribute="leading" secondItem="V0G-EO-QMf" secondAttribute="leading" constant="40" id="rls-Zh-NL3"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="V0G-EO-QMf" firstAttribute="leading" secondItem="7OX-CN-2lI" secondAttribute="leading" id="BZd-hA-FLn"/>
+                        <constraint firstItem="V0G-EO-QMf" firstAttribute="height" secondItem="7OX-CN-2lI" secondAttribute="height" id="Hli-9J-gbQ"/>
+                        <constraint firstAttribute="trailing" secondItem="V0G-EO-QMf" secondAttribute="trailing" id="aws-4S-Bl8"/>
+                        <constraint firstItem="V0G-EO-QMf" firstAttribute="width" secondItem="7OX-CN-2lI" secondAttribute="width" id="k47-R6-bzh"/>
+                        <constraint firstAttribute="bottom" secondItem="V0G-EO-QMf" secondAttribute="bottom" id="qhI-dM-CV9"/>
+                        <constraint firstItem="V0G-EO-QMf" firstAttribute="top" secondItem="7OX-CN-2lI" secondAttribute="top" id="yw2-rh-5uN"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="0.2494376743" green="0.71740238059999994" blue="0.72036431759999997" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="7OX-CN-2lI" secondAttribute="trailing" id="Jou-0C-P7O"/>
+                <constraint firstItem="7OX-CN-2lI" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="O3N-4y-cF0"/>
+                <constraint firstItem="7OX-CN-2lI" firstAttribute="top" secondItem="1" secondAttribute="top" id="wBC-7z-YXq"/>
+                <constraint firstAttribute="bottom" secondItem="7OX-CN-2lI" secondAttribute="bottom" id="yh7-B3-HlZ"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="cp_email_0.png" width="54" height="44"/>
+    </resources>
+</document>

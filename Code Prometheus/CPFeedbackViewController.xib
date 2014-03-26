@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CPFeedbackViewController">
+            <connections>
+                <outlet property="myTextView" destination="See-Oa-pQf" id="N6c-SA-oZn"/>
+                <outlet property="view" destination="1" id="3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lSC-QZ-Xpk" customClass="TPKeyboardAvoidingScrollView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UWU-6P-LLs">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="290"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0g2-WO-ecc">
+                                    <rect key="frame" x="240" y="240" width="60" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.2494376743" green="0.71740238059999994" blue="0.72036431759999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="60" id="bmj-2I-71v"/>
+                                        <constraint firstAttribute="height" constant="30" id="eg0-q5-3vI"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" title="提交">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="submit:" destination="-1" eventType="touchUpInside" id="AMB-ac-cBR"/>
+                                    </connections>
+                                </button>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="See-Oa-pQf" customClass="HPTextViewInternal">
+                                    <rect key="frame" x="20" y="20" width="280" height="200"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="200" id="Kbc-np-OPs"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="See-Oa-pQf" secondAttribute="trailing" constant="20" symbolic="YES" id="A4w-Sw-Hih"/>
+                                <constraint firstAttribute="bottom" secondItem="0g2-WO-ecc" secondAttribute="bottom" constant="20" symbolic="YES" id="D31-bb-GgL"/>
+                                <constraint firstItem="See-Oa-pQf" firstAttribute="leading" secondItem="UWU-6P-LLs" secondAttribute="leading" constant="20" symbolic="YES" id="HS4-c4-OXt"/>
+                                <constraint firstItem="0g2-WO-ecc" firstAttribute="top" secondItem="See-Oa-pQf" secondAttribute="bottom" constant="20" id="Iv8-lL-7No"/>
+                                <constraint firstAttribute="trailing" secondItem="0g2-WO-ecc" secondAttribute="trailing" constant="20" symbolic="YES" id="O9l-fc-WXj"/>
+                                <constraint firstItem="See-Oa-pQf" firstAttribute="top" secondItem="UWU-6P-LLs" secondAttribute="top" constant="20" symbolic="YES" id="iYf-gI-IwC"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="UWU-6P-LLs" firstAttribute="top" secondItem="lSC-QZ-Xpk" secondAttribute="top" id="76Q-xl-eTm"/>
+                        <constraint firstAttribute="bottom" secondItem="UWU-6P-LLs" secondAttribute="bottom" id="KW9-Kq-D1f"/>
+                        <constraint firstItem="UWU-6P-LLs" firstAttribute="leading" secondItem="lSC-QZ-Xpk" secondAttribute="leading" id="Ki7-JQ-RCE"/>
+                        <constraint firstAttribute="width" secondItem="UWU-6P-LLs" secondAttribute="width" id="LnS-VN-OB9"/>
+                        <constraint firstAttribute="trailing" secondItem="UWU-6P-LLs" secondAttribute="trailing" id="QRt-NG-euv"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="lSC-QZ-Xpk" secondAttribute="bottom" id="6G8-PH-inM"/>
+                <constraint firstItem="lSC-QZ-Xpk" firstAttribute="top" secondItem="1" secondAttribute="top" id="8IC-IU-neH"/>
+                <constraint firstAttribute="trailing" secondItem="lSC-QZ-Xpk" secondAttribute="trailing" id="ldd-v6-cMa"/>
+                <constraint firstItem="lSC-QZ-Xpk" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="xrH-Cn-hkT"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+</document>

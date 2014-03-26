@@ -1,0 +1,1 @@
+PODS_CODE_PROMETHEUS_KSCRASH_OTHER_LDFLAGS = -lc++ -lz -framework Foundation -framework MessageUI -framework SystemConfiguration

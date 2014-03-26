@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CPSyncSettingViewController">
+            <connections>
+                <outlet property="syncOnlyWifiSwitch" destination="Wtl-ed-ECR" id="Wou-MZ-xAL"/>
+                <outlet property="view" destination="1" id="3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="仅在wifi环境下同步数据" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Oe-C6-JVb">
+                    <rect key="frame" x="20" y="11" width="184" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="184" id="HkF-0G-qBr"/>
+                        <constraint firstAttribute="height" constant="21" id="fiB-P6-81w"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wtl-ed-ECR">
+                    <rect key="frame" x="251" y="6" width="51" height="31"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="onTintColor" red="0.2494376743" green="0.71740238059999994" blue="0.72036431759999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="syncOnlyWifiSwitchValueChange:" destination="-1" eventType="valueChanged" id="Aox-SM-IT7"/>
+                    </connections>
+                </switch>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9t6-Qj-w75">
+                    <rect key="frame" x="0.0" y="44" width="320" height="1"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="08P-vM-hq2"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="4Oe-C6-JVb" firstAttribute="top" secondItem="1" secondAttribute="top" constant="11" id="1Dp-V0-9E8"/>
+                <constraint firstItem="4Oe-C6-JVb" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="4af-8e-Y7D"/>
+                <constraint firstItem="9t6-Qj-w75" firstAttribute="top" secondItem="4Oe-C6-JVb" secondAttribute="bottom" constant="12" id="6h4-ad-uim"/>
+                <constraint firstItem="9t6-Qj-w75" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="MZ6-Bc-j8D"/>
+                <constraint firstItem="Wtl-ed-ECR" firstAttribute="centerY" secondItem="4Oe-C6-JVb" secondAttribute="centerY" id="cUw-Pm-Yg4"/>
+                <constraint firstAttribute="trailing" secondItem="Wtl-ed-ECR" secondAttribute="trailing" constant="20" symbolic="YES" id="vVb-vb-Q5x"/>
+                <constraint firstAttribute="trailing" secondItem="9t6-Qj-w75" secondAttribute="trailing" id="ysC-jJ-1bR"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+</document>

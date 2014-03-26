@@ -1,0 +1,5 @@
+#include "Pods-Code Prometheus-BlocksKit.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/BlocksKit" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/ABCalendarPicker" "${PODS_ROOT}/Headers/ASIHTTPRequest" "${PODS_ROOT}/Headers/BlocksKit" "${PODS_ROOT}/Headers/CocoaLumberjack" "${PODS_ROOT}/Headers/DACircularProgress" "${PODS_ROOT}/Headers/FDTake" "${PODS_ROOT}/Headers/HPGrowingTextView" "${PODS_ROOT}/Headers/KSCrash" "${PODS_ROOT}/Headers/MBProgressHUD" "${PODS_ROOT}/Headers/MWPhotoBrowser" "${PODS_ROOT}/Headers/Masonry" "${PODS_ROOT}/Headers/NSDate-Extensions" "${PODS_ROOT}/Headers/NYXImagesKit" "${PODS_ROOT}/Headers/PinYin4Objc" "${PODS_ROOT}/Headers/PopoverView" "${PODS_ROOT}/Headers/RHAddressBook" "${PODS_ROOT}/Headers/Reachability" "${PODS_ROOT}/Headers/SDWebImage" "${PODS_ROOT}/Headers/TDBadgedCell" "${PODS_ROOT}/Headers/TDSemiModal" "${PODS_ROOT}/Headers/TPKeyboardAvoiding" "${PODS_ROOT}/Headers/TWMessageBarManager" "${PODS_ROOT}/Headers/libffi"
+OTHER_LDFLAGS = -ObjC ${PODS_CODE_PROMETHEUS_BLOCKSKIT_OTHER_LDFLAGS}
+PODS_ROOT = ${SRCROOT}

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CPRechargeViewController">
+            <connections>
+                <outlet property="rechargeItemLayoutView" destination="FuG-6f-vo1" id="71g-qG-9Ii"/>
+                <outlet property="scrollView" destination="3Ep-9c-Vdg" id="8Vw-oZ-xlh"/>
+                <outlet property="view" destination="1" id="3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ep-9c-Vdg">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubs-BE-wYv">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="106"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择您想要充值的金额" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xr7-JS-B6s">
+                                    <rect key="frame" x="20" y="11" width="187" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FuG-6f-vo1">
+                                    <rect key="frame" x="0.0" y="52" width="320" height="0.0"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="500" id="GgV-Zz-NGd"/>
+                                    </constraints>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6d-Pm-Bap">
+                                    <rect key="frame" x="60" y="63" width="200" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="1" green="0.19505248390702312" blue="0.39758915964140451" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="tJa-P8-xMJ"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" title="充值">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="recharge:" destination="-1" eventType="touchUpInside" id="fUQ-FP-EdM"/>
+                                    </connections>
+                                </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8R-tJ-llf">
+                                    <rect key="frame" x="0.0" y="105" width="320" height="1"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="Tz6-ke-Bw6"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="Xr7-JS-B6s" firstAttribute="top" secondItem="ubs-BE-wYv" secondAttribute="top" constant="11" id="31l-hx-RxQ"/>
+                                <constraint firstAttribute="trailing" secondItem="i6d-Pm-Bap" secondAttribute="trailing" constant="60" id="3VJ-yh-4bG"/>
+                                <constraint firstItem="Xr7-JS-B6s" firstAttribute="leading" secondItem="ubs-BE-wYv" secondAttribute="leading" constant="20" symbolic="YES" id="GqC-EA-EBE"/>
+                                <constraint firstItem="j8R-tJ-llf" firstAttribute="leading" secondItem="ubs-BE-wYv" secondAttribute="leading" id="ONg-9W-bEl"/>
+                                <constraint firstItem="FuG-6f-vo1" firstAttribute="leading" secondItem="ubs-BE-wYv" secondAttribute="leading" id="T53-TY-ifg"/>
+                                <constraint firstItem="i6d-Pm-Bap" firstAttribute="top" secondItem="FuG-6f-vo1" secondAttribute="bottom" constant="11" id="Ys8-8d-DkM"/>
+                                <constraint firstAttribute="centerX" secondItem="i6d-Pm-Bap" secondAttribute="centerX" id="fuI-yx-gbA"/>
+                                <constraint firstAttribute="bottom" secondItem="j8R-tJ-llf" secondAttribute="bottom" id="meE-UF-GdG"/>
+                                <constraint firstItem="FuG-6f-vo1" firstAttribute="top" secondItem="Xr7-JS-B6s" secondAttribute="bottom" constant="20" id="qi3-KE-ZlE"/>
+                                <constraint firstAttribute="trailing" secondItem="FuG-6f-vo1" secondAttribute="trailing" id="qiY-SE-xCB"/>
+                                <constraint firstItem="j8R-tJ-llf" firstAttribute="top" secondItem="i6d-Pm-Bap" secondAttribute="bottom" constant="12" id="rcu-ta-mgU"/>
+                                <constraint firstAttribute="trailing" secondItem="j8R-tJ-llf" secondAttribute="trailing" id="vzA-Cm-lNh"/>
+                                <constraint firstItem="i6d-Pm-Bap" firstAttribute="leading" secondItem="ubs-BE-wYv" secondAttribute="leading" constant="60" id="zVi-86-bfY"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="ubs-BE-wYv" secondAttribute="bottom" id="C65-Kj-rX7"/>
+                        <constraint firstAttribute="trailing" secondItem="ubs-BE-wYv" secondAttribute="trailing" id="MCi-6a-Arx"/>
+                        <constraint firstItem="ubs-BE-wYv" firstAttribute="leading" secondItem="3Ep-9c-Vdg" secondAttribute="leading" id="ZHT-2M-6mP"/>
+                        <constraint firstAttribute="width" secondItem="ubs-BE-wYv" secondAttribute="width" id="j60-d6-as1"/>
+                        <constraint firstItem="ubs-BE-wYv" firstAttribute="top" secondItem="3Ep-9c-Vdg" secondAttribute="top" id="vKV-mc-E1J"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="3Ep-9c-Vdg" firstAttribute="top" secondItem="1" secondAttribute="top" id="FCa-qJ-lsJ"/>
+                <constraint firstItem="3Ep-9c-Vdg" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="Qp4-ZR-yp4"/>
+                <constraint firstAttribute="bottom" secondItem="3Ep-9c-Vdg" secondAttribute="bottom" id="R63-7d-Qo3"/>
+                <constraint firstAttribute="trailing" secondItem="3Ep-9c-Vdg" secondAttribute="trailing" id="umh-eS-dfN"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+</document>
