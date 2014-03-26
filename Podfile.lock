@@ -1,17 +1,17 @@
 PODS:
   - ABCalendarPicker (1.1.2)
-  - ASIHTTPRequest (1.8.1):
+  - ASIHTTPRequest (1.8.2):
     - ASIHTTPRequest/ASIWebPageRequest
     - ASIHTTPRequest/CloudFiles
     - ASIHTTPRequest/Core
     - ASIHTTPRequest/S3
-  - ASIHTTPRequest/ASIWebPageRequest (1.8.1):
+  - ASIHTTPRequest/ASIWebPageRequest (1.8.2):
     - ASIHTTPRequest/Core
-  - ASIHTTPRequest/CloudFiles (1.8.1):
+  - ASIHTTPRequest/CloudFiles (1.8.2):
     - ASIHTTPRequest/Core
-  - ASIHTTPRequest/Core (1.8.1):
+  - ASIHTTPRequest/Core (1.8.2):
     - Reachability
-  - ASIHTTPRequest/S3 (1.8.1):
+  - ASIHTTPRequest/S3 (1.8.2):
     - ASIHTTPRequest/Core
   - CocoaLumberjack (1.6.5.1):
     - CocoaLumberjack/Core
@@ -52,7 +52,7 @@ PODS:
 
 DEPENDENCIES:
   - ABCalendarPicker (= 1.1.2)
-  - ASIHTTPRequest (= 1.8.1)
+  - ASIHTTPRequest (~> 1.8.2)
   - CocoaLumberjack (= 1.6.5.1)
   - FDTake (= 0.1)
   - HPGrowingTextView (= 1.0.1)
@@ -80,7 +80,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   ABCalendarPicker: a7057f2007592ea4688a9c259ab223460852b8a0
-  ASIHTTPRequest: 34f0d02cc3e31e87591c8d9bda78697a29b92035
+  ASIHTTPRequest: 4bd3ed65bf8a726292c5fa79ea5c0a2e02c97241
   CocoaLumberjack: 17803afbade3126a377d32b8d23367264b44ced6
   DACircularProgress: 659d6fd11b5fc099c13ba9350239d9dca324916a
   FDTake: 1b8a6647bf132df32868b00b423f5ab8b938e00d
