@@ -178,7 +178,8 @@ static const CGFloat kImageSpacing = 5;
             UIImage* photo = image.image;
             // Button
             UIButton* buttonImage = [[UIButton alloc] initWithFrame:CGRectZero];
-            [buttonImage setBackgroundImage:[photo scaleToFitSize:CP_UI_PHOTO_SIZE_THUMBNAIL] forState:UIControlStateNormal];
+            [buttonImage setImage:[photo scaleToFitSize:CP_UI_PHOTO_SIZE_THUMBNAIL] forState:UIControlStateNormal];
+            [buttonImage.imageView setContentMode:UIViewContentModeScaleAspectFit];
             buttonImage.tag = [self.files indexOfObject:image];
             // 单击
             [buttonImage addTarget:self action:@selector(photoButtonClick:) forControlEvents:UIControlEventTouchUpInside];

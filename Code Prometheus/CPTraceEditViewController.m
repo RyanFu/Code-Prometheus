@@ -213,7 +213,8 @@ static const CGFloat kImageSpacing = 5;
             
             // Button
             UIButton* buttonImage = [[UIButton alloc] initWithFrame:CGRectZero];
-            [buttonImage setBackgroundImage:[photo scaleToFitSize:CP_UI_PHOTO_SIZE_THUMBNAIL] forState:UIControlStateNormal];
+            [buttonImage setImage:[photo scaleToFitSize:CP_UI_PHOTO_SIZE_THUMBNAIL] forState:UIControlStateNormal];
+            [buttonImage.imageView setContentMode:UIViewContentModeScaleAspectFit];
             buttonImage.tag = [self.files indexOfObject:image];
             // 长按手势
             UILongPressGestureRecognizer *btnLongTap = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(photoButtonLongClick:)];
