@@ -120,45 +120,45 @@
 #pragma mark - MFMailComposeViewControllerDelegate
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
-//    //关闭邮件发送窗口
-//    [self dismissViewControllerAnimated:YES completion:^{
-//        NSString *msg = nil;
-//        switch (result) {
-//            case MFMailComposeResultCancelled:
-//                break;
-//            case MFMailComposeResultSaved:
-//                break;
-//            case MFMailComposeResultSent:
-//                msg = @"成功";
-//                break;
-//            case MFMailComposeResultFailed:
-//                msg = @"失败";
-//                break;
-//            default:
-//                break;
-//        }
-//        if (msg) {
-//            [self alertWithMessage:msg];
-//        }
-//    }];
-    
-    NSString *msg = nil;
-    switch (result) {
+    //关闭邮件发送窗口
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSString *msg = nil;
+        switch (result) {
             case MFMailComposeResultCancelled:
-            break;
+                break;
             case MFMailComposeResultSaved:
-            break;
+                break;
             case MFMailComposeResultSent:
-            msg = @"成功";
-            break;
+                msg = @"成功";
+                break;
             case MFMailComposeResultFailed:
-            msg = @"失败";
-            break;
-        default:
-            break;
-    }
-    if (msg) {
-        [self alertWithMessage:msg];
-    }
+                msg = @"失败";
+                break;
+            default:
+                break;
+        }
+        if (msg) {
+            [self alertWithMessage:msg];
+        }
+    }];
+    
+//    NSString *msg = nil;
+//    switch (result) {
+//            case MFMailComposeResultCancelled:
+//            break;
+//            case MFMailComposeResultSaved:
+//            break;
+//            case MFMailComposeResultSent:
+//            msg = @"成功";
+//            break;
+//            case MFMailComposeResultFailed:
+//            msg = @"失败";
+//            break;
+//        default:
+//            break;
+//    }
+//    if (msg) {
+//        [self alertWithMessage:msg];
+//    }
 }
 @end

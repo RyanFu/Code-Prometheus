@@ -33,7 +33,7 @@ static int const ddLogLevel = LOG_LEVEL_WARN;
 #endif
 
 
-static NSString* const CP_LOG_EMAIL_TO = @"623637646@qq.com";
+static NSString* const CP_LOG_EMAIL_TO = @"wangya@mirror-networks.com";
 
 
 @interface CPLog : NSObject
