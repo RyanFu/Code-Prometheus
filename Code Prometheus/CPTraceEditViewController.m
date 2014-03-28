@@ -17,6 +17,7 @@
 #import <NYXImagesKit.h>
 #import "CPImage.h"
 #import <MBProgressHUD.h>
+#import <TWMessageBarManager.h>
 
 static char CPAssociatedKeyTag;
 
@@ -296,7 +297,15 @@ static const CGFloat kImageSpacing = 5;
     self.popoverView = [PopoverView showPopoverAtPoint:button.center inView:button.superview withStringArray:CP_TRACE_STAGE_TITLE_ITEM delegate:self];
 }
 #pragma mark - Action
+#define CP_MAX_PICTURE 9
 - (void)addPictureButtonClick:(id)sender {
+    if (self.files.count>=CP_MAX_PICTURE) {
+        [[TWMessageBarManager sharedInstance] hideAll];
+        [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"NO"
+                                                       description:[NSString stringWithFormat:@"最多包含%d张图片",CP_MAX_PICTURE]
+                                                              type:TWMessageBarMessageTypeInfo];
+        return;
+    }
     [self.takeController takePhotoOrChooseFromLibrary];
 }
 -(void)photoButtonClick:(id)sender{
