@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 // 缩略图大小
-#define CP_UI_PHOTO_SIZE_THUMBNAIL CGSizeMake(100,100)
+//#define CP_UI_PHOTO_SIZE_THUMBNAIL CGSizeMake(100,100)
 // 原始图大小
 #define CP_UI_PHOTO_SIZE_BROWSE CGSizeMake(512,512)
 

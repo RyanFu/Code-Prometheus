@@ -65,12 +65,12 @@ typedef NS_ENUM(NSInteger, MapModelType) {
     [self clearSearch];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // 删除 map
-    [self.mapView removeFromSuperview];
-}
+//- (void)didReceiveMemoryWarning
+//{
+//    [super didReceiveMemoryWarning];
+//    // 删除 map
+//    [self.mapView removeFromSuperview];
+//}
 #pragma mark - private
 -(void)loadDB{
     self.models = [NSMutableArray array];

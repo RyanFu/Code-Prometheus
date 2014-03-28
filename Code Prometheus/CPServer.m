@@ -920,10 +920,9 @@ static WYSyncSimple* wySyncSimple;
         // 获取照片
         UIImage* image = file.image;
         if (!image) {
-            // 找不到文件
-#warning 如果用户在离线状态下,清空缓存,会找不到文件,这时应该上传一张默认图片！
+            // 找不到文件 , 用默认图片代替
             CPLogError(@"找不到文件,file:%@",file.cp_uuid);
-            return NO;
+            image = [UIImage imageNamed:@"cp_null_photo"];
         }
         NSData* data = UIImageJPEGRepresentation(image, 1);
         // 上传文件 获取文件在服务器上的url
@@ -946,6 +945,10 @@ static WYSyncSimple* wySyncSimple;
                 CPLogError(@"文件获取到url,更新数据库失败,file:%@",file);
                 return NO;
             }
+            // 清除本地uuid为key的图片缓存,生成url为key的图片缓存
+            [[SDImageCache sharedImageCache] storeImage:image forKey:file.cp_url];
+            [[SDImageCache sharedImageCache] removeImageForKey:file.cp_uuid];
+            
             CPLogInfo(@"上传文件成功 uuid:%@  url:%@",file.cp_uuid,file.cp_url);
             wydo.wy_data = [file syncDataContent];
             return YES;
@@ -961,6 +964,10 @@ static WYSyncSimple* wySyncSimple;
     NSMutableDictionary* dataDic = [NSMutableDictionary dictionaryWithDictionary:[wydo.wy_data objectFromJSONStringWithParseOptions:JKParseOptionStrict]];
     NSString* url = [dataDic objectForKey:@"cp_url"];
     NSString* cp_uuid = [dataDic objectForKey:@"cp_uuid"];
+    
+    if (!url) {
+        return;
+    }
     
     CPLogInfo(@"准备下载文件,url:%@,cp_uuid:%@",url,cp_uuid);
     [SDWebImageDownloader.sharedDownloader downloadImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",URL_SERVER_ROOT,url]] options:0 progress:^(NSUInteger receivedSize, long long expectedSize)

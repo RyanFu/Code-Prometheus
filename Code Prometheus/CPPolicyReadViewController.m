@@ -90,15 +90,15 @@ static NSString* const CP_POLICY_PAY_WAY_TITLE_CASH = @"现金";
         [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
     }
 }
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // 删除uiimageview
-    for(UIView *subv in [self.photoLayoutView subviews])
-    {
-        [subv removeFromSuperview];
-    }
-}
+//- (void)didReceiveMemoryWarning
+//{
+//    [super didReceiveMemoryWarning];
+//    // 删除uiimageview
+//    for(UIView *subv in [self.photoLayoutView subviews])
+//    {
+//        [subv removeFromSuperview];
+//    }
+//}
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"cp_segue_policy_read_2_edit"])
     {
@@ -194,10 +194,9 @@ static const CGFloat kImageSpacing = 5;
     }
     if (self.files && self.files.count>0) {
         for (CPImage* image in self.files) {
-            UIImage* photo = image.image;
             // Button
             UIButton* buttonImage = [[UIButton alloc] initWithFrame:CGRectZero];
-            [buttonImage setImage:[photo scaleToFitSize:CP_UI_PHOTO_SIZE_THUMBNAIL] forState:UIControlStateNormal];
+            [buttonImage setImageWithCPImage:image];
             [buttonImage.imageView setContentMode:UIViewContentModeScaleAspectFit];
             buttonImage.tag = [self.files indexOfObject:image];
             // 单击
@@ -227,8 +226,15 @@ static const CGFloat kImageSpacing = 5;
     return self.files.count;
 }
 - (id<MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index{
-    UIImage* image = [(CPImage*)[self.files objectAtIndex:index] image];
-    MWPhoto *photo = [MWPhoto photoWithImage:[image scaleToFitSize:CP_UI_PHOTO_SIZE_BROWSE]];
-    return photo;
+    CPImage* cpImage = [self.files objectAtIndex:index];
+    UIImage* image = cpImage.image;
+    if (image) {
+        return [MWPhoto photoWithImage:[image scaleToFitSize:CP_UI_PHOTO_SIZE_BROWSE]];
+    }
+    if (cpImage.cp_uuid) {
+        return [MWPhoto photoWithURL:[NSURL URLWithString:cpImage.cp_uuid]];
+    }
+    CPLogError(@"找不到图片!");
+    return [MWPhoto photoWithImage:[UIImage imageNamed:@"cp_null_photo"]];
 }
 @end

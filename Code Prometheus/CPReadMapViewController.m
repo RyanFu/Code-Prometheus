@@ -25,12 +25,12 @@
     [self.mapView selectAnnotation:pa animated:YES];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // 删除 map
-    [self.mapView removeFromSuperview];
-}
+//- (void)didReceiveMemoryWarning
+//{
+//    [super didReceiveMemoryWarning];
+//    // 删除 map
+//    [self.mapView removeFromSuperview];
+//}
 #pragma mark - MAMapViewDelegate
 
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation

@@ -57,12 +57,12 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // 删除 map
-    [self.mapView removeFromSuperview];
-}
+//- (void)didReceiveMemoryWarning
+//{
+//    [super didReceiveMemoryWarning];
+//    // 删除 map
+//    [self.mapView removeFromSuperview];
+//}
 #pragma mark - private
 /* 输入提示 搜索.*/
 - (void)searchTipsWithKey:(NSString *)key

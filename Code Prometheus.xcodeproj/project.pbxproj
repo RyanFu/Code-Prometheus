@@ -65,6 +65,7 @@
 		03391D4718223260009197D4 /* ReGeocodeAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 03391D3E18223260009197D4 /* ReGeocodeAnnotation.m */; };
 		033A28331862DE1900B0AD79 /* CPAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 033A28321862DE1900B0AD79 /* CPAccountViewController.m */; };
 		03476940187D4FED00FE77D1 /* CPGlobalMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0347693E187D4FED00FE77D1 /* CPGlobalMapViewController.m */; };
+		035A744618E3CF01003028E6 /* cp_null_photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 035A744518E3CF01003028E6 /* cp_null_photo@2x.png */; };
 		0361437318432C8500B433DC /* CPTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 0361437218432C8500B433DC /* CPTrace.m */; };
 		0361437A184359A300B433DC /* NSString+CP_Aleph.m in Sources */ = {isa = PBXBuildFile; fileRef = 03614379184359A300B433DC /* NSString+CP_Aleph.m */; };
 		036513B518473073006389FA /* CPContactsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 036513B418473073006389FA /* CPContactsDetailViewController.m */; };
@@ -330,6 +331,7 @@
 		033A28321862DE1900B0AD79 /* CPAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPAccountViewController.m; sourceTree = "<group>"; };
 		0347693D187D4FEC00FE77D1 /* CPGlobalMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGlobalMapViewController.h; sourceTree = "<group>"; };
 		0347693E187D4FED00FE77D1 /* CPGlobalMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPGlobalMapViewController.m; sourceTree = "<group>"; };
+		035A744518E3CF01003028E6 /* cp_null_photo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cp_null_photo@2x.png"; sourceTree = "<group>"; };
 		0361437118432C8500B433DC /* CPTrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTrace.h; sourceTree = "<group>"; };
 		0361437218432C8500B433DC /* CPTrace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPTrace.m; sourceTree = "<group>"; };
 		03614378184359A300B433DC /* NSString+CP_Aleph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CP_Aleph.h"; sourceTree = "<group>"; };
@@ -928,6 +930,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		035A744418E3CEFA003028E6 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				035A744518E3CF01003028E6 /* cp_null_photo@2x.png */,
+			);
+			name = base;
+			sourceTree = "<group>";
+		};
 		035F9E59185E95A800F8F766 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
@@ -1132,6 +1142,7 @@
 		03F201121849D8B100055B8D /* image */ = {
 			isa = PBXGroup;
 			children = (
+				035A744418E3CEFA003028E6 /* base */,
 				03C5B36218DC2324004CBE3A /* home */,
 				03C5B35A18DBF4FF004CBE3A /* cp_schedule_yellow@2x.png */,
 				03C5B35B18DBF4FF004CBE3A /* cp_schedule_all@2x.png */,
@@ -1357,6 +1368,7 @@
 				03C5B37718DC2336004CBE3A /* cp_home_09@2x.png in Resources */,
 				03F201201849E32D00055B8D /* cp_add_1.png in Resources */,
 				03C5B39118DC242C004CBE3A /* cp_home_light_11@2x.png in Resources */,
+				035A744618E3CF01003028E6 /* cp_null_photo@2x.png in Resources */,
 				03F11228186BE1FA0074F798 /* CPSyncSettingViewController.xib in Resources */,
 				03C5B37618DC2336004CBE3A /* cp_home_08@2x.png in Resources */,
 				03C5B37A18DC2336004CBE3A /* cp_home_12@2x.png in Resources */,

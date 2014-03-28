@@ -98,7 +98,7 @@
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
 {
-    CPLogError(@"获取 推送 token 失败, error: %@", error);
+    CPLogError(@"获取推送 token 失败, error: %@", error);
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{

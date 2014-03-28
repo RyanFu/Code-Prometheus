@@ -8,6 +8,8 @@
 
 #import "CPImage.h"
 #import <SDImageCache.h>
+#import <UIImageView+WebCache.h>
+#import <UIButton+WebCache.h>
 
 @implementation CPImage{
     UIImage* _image;
@@ -26,15 +28,18 @@
     if (!_image) {
         @synchronized(self){
             if (!_image) {
-                _image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:self.cp_url];
+                if (self.cp_url) {
+                    _image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:self.cp_url];
+                }
+                if (!_image) {
+                    _image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:self.cp_uuid];
+                }
             }
-#warning 如果读取不到,应该去网络获取,并显示一张“请刷新”,网络也没有,则应该显示一张“无图片”\
-废弃这个警告,应该在应用层控制\
-不废除此警告,这里下载图片,控制层也下载
         }
     }
     return _image;
 }
+
 #pragma mark - LKDBHelper
 // 表名
 +(NSString *)getTableName
@@ -46,7 +51,8 @@
     [super dbDidIDeleted:entity result:result];
     CPImage* cpimage = (CPImage*)entity;
     // 若此图片在数据库中无引用,则从硬盘删除
-    if ([[CPDB getLKDBHelperByUser] rowCount:self where:@{@"cp_url":cpimage.cp_url}] == 0) {
+    [[SDImageCache sharedImageCache] removeImageForKey:cpimage.cp_uuid];
+    if (cpimage.cp_url && [[CPDB getLKDBHelperByUser] rowCount:self where:@{@"cp_url":cpimage.cp_url}] == 0) {
         [[SDImageCache sharedImageCache] removeImageForKey:cpimage.cp_url];
     }
 }
@@ -54,46 +60,51 @@
     [super dbDidInserted:entity result:result];
     CPImage* cpimage = (CPImage*)entity;
     if (cpimage.image) {
-        [[SDImageCache sharedImageCache] storeImage:cpimage.image forKey:cpimage.cp_url];
+        if (cpimage.cp_url) {
+            [[SDImageCache sharedImageCache] storeImage:cpimage.image forKey:cpimage.cp_url];
+        }else{
+            [[SDImageCache sharedImageCache] storeImage:cpimage.image forKey:cpimage.cp_uuid];
+        }
+    }
+}
++(void)dbWillUpdate:(NSObject *)entity{
+    @throw [NSException exceptionWithName:@"不建议更新 CPImage" reason:@"更新CPImage,其对应的图片文件可能不能清除!" userInfo:nil];
+}
+@end
+
+
+
+@implementation UIImageView (CPImage)
+
+-(void)setImageWithCPImage:(CPImage*)image{
+    UIImage* ima = image.image;
+    if (ima) {
+        self.image = ima;
+    }else{
+        if (image.cp_url) {
+            [self setImageWithURL:[NSURL URLWithString:image.cp_url] placeholderImage:nil options:SDWebImageRetryFailed|SDWebImageProgressiveDownload|SDWebImageRefreshCached|SDWebImageContinueInBackground];
+        }else{
+            CPLogError(@"图片未同步,并且本地找不到! uuid:%@",image.cp_uuid);
+            self.image = [UIImage imageNamed:@"cp_null_photo"];
+        }
     }
 }
 
-//#pragma mark - WYSync
-//-(NSString*) syncDataContent{
-//    return [self propertyKeyValue];
-//}
-//#pragma mark - private
-//-(NSString*)propertyKeyValue{
-//    NSObject* entity = self;
-//    LKModelInfos* infos = [[entity class] getModelInfos];
-//    NSMutableString* data = [NSMutableString stringWithCapacity:infos.count*20];
-//    [data appendString:@"{"];
-//    for (int i=0; i<infos.count; i++) {
-//        LKDBProperty* property = [infos objectWithIndex:i];
-//        id value = [self modelValueWithProperty:property model:entity];
-//        if (!value || value==[NSNull null]) {
-//            value = @"";
-//        }
-//        [data appendFormat:@"\"%@\":\"%@\",",property.sqlColumeName,value];
-//    }
-//    [data replaceCharactersInRange:NSMakeRange(data.length-1, 1) withString:@"}"];
-//    return data;
-//}
-//
-//-(id)modelValueWithProperty:(LKDBProperty *)property model:(NSObject *)model {
-//    id value = nil;
-//    if(property.isUserCalculate)
-//    {
-//        value = [model userGetValueForModel:property];
-//    }
-//    else
-//    {
-//        value = [model modelGetValue:property];
-//    }
-//    if(value == nil)
-//    {
-//        value = @"";
-//    }
-//    return value;
-//}
+@end
+
+@implementation UIButton (CPImage)
+-(void)setImageWithCPImage:(CPImage*)image{
+    UIImage* ima = image.image;
+    if (ima) {
+        [self setImage:ima forState:UIControlStateNormal];
+    }else{
+        if (image.cp_url) {
+            [self setImageWithURL:[NSURL URLWithString:image.cp_url] forState:UIControlStateNormal placeholderImage:nil options:SDWebImageRetryFailed|SDWebImageProgressiveDownload|SDWebImageRefreshCached|SDWebImageContinueInBackground];
+        }else{
+            CPLogError(@"图片未同步,并且本地找不到! uuid:%@",image.cp_uuid);
+            [self setImage:[UIImage imageNamed:@"cp_null_photo"] forState:UIControlStateNormal];
+        }
+    }
+}
+
 @end

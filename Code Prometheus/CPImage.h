@@ -19,3 +19,12 @@
 
 @property (nonatomic)UIImage* image;
 @end
+
+
+@interface UIImageView (CPImage)
+-(void)setImageWithCPImage:(CPImage*)image;
+@end
+
+@interface UIButton (CPImage)
+-(void)setImageWithCPImage:(CPImage*)image;
+@end

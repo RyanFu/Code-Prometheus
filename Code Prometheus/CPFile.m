@@ -126,11 +126,12 @@
 }
 #pragma mark - ASIProgressDelegate
 +(void)setProgress:(float)newProgress{
-    static NSInteger progressLast = -1;
-    NSInteger progress = newProgress*100;
-    if (newProgress != progress) {
-        CPLogInfo(@"进度:%d%%",progress);
-        progressLast = progress;
-    }
+//    static NSInteger progressLast = -1;
+//    NSInteger progress = newProgress*100;
+//    if (newProgress != progress) {
+//        CPLogInfo(@"进度:%d%%",progress);
+//        progressLast = progress;
+//    }
+    CPLogInfo(@"进度:%f",newProgress);
 }
 @end
