@@ -64,7 +64,8 @@
                 [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"OK"
                                                                description:[NSString stringWithFormat:@"导入%d条通讯录",count]
                                                                       type:TWMessageBarMessageTypeSuccess];
-                
+                // 同步
+                [CPServer sync];
             }else{
                 [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"NO"
                                                                description:@"导入通讯录失败,请查看权限设置"
