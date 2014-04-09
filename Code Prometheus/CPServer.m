@@ -860,6 +860,7 @@ static const NSInteger Tag_ErrorUsernameOrPassword = 20404;
 
 static WYSyncSimple* wySyncSimple;
 // 同步
+Reachability * reach;
 +(void) sync{
     @synchronized(self){
         if (!wySyncSimple){
@@ -878,7 +879,10 @@ static WYSyncSimple* wySyncSimple;
         return;
     }
     // 网络限制
-    Reachability * reach = [Reachability reachabilityWithHostname:URL_SERVER_ROOT];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        reach = [Reachability reachabilityWithHostname:URL_SERVER_ROOT];
+    });
     if ([reach currentReachabilityStatus] == NotReachable) {
         CPLogWarn(@"%s没有网络,不进行同步",__FUNCTION__);
         return;
@@ -892,6 +896,10 @@ static WYSyncSimple* wySyncSimple;
     }
     reach.reachableBlock = ^(Reachability * reachability)
     {
+        if ([reachability currentReachabilityStatus] == ReachableViaWWAN && CPSyncOnlyWifi) {
+            CPLogWarn(@"用户要求仅在Wifi下同步,SO 不进行同步");
+            return;
+        }
         [wySyncSimple notifyNeedSync];
     };
     reach.unreachableBlock = ^(Reachability * reachability)

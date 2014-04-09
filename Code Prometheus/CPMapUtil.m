@@ -12,8 +12,16 @@
 + (MAMapView *)sharedMapView
 {
     static dispatch_once_t once;
-    static id instance;
-    dispatch_once(&once, ^{instance = MAMapView.new;});
+    static MAMapView* instance;
+    dispatch_once(&once, ^{
+        instance = MAMapView.new;
+        instance.rotateEnabled = NO;
+        instance.rotateCameraEnabled = NO;
+//        instance.showsCompass = YES;
+//        instance.compassOrigin = CGPointMake(320, 0);
+//        instance.showsScale = YES;
+//        instance.scaleOrigin = CGPointMake(0, 0);
+    });
     return instance;
 }
 

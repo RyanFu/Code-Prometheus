@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TMa-Ho-qbp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TMa-Ho-qbp">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -404,7 +404,7 @@
         <!--Contacts Detail View Controller-->
         <scene sceneID="f9k-Pz-zK1">
             <objects>
-                <tableViewController id="ZQH-hU-2bj" customClass="CPContactsDetailViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CPContactsDetailViewController" id="ZQH-hU-2bj" customClass="CPContactsDetailViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="W98-7M-MwH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5161,7 +5161,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="10001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5n-uo-UbH">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="10001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5n-uo-UbH">
                                                     <rect key="frame" x="26" y="11" width="127" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
@@ -5170,7 +5170,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="10002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UG0-lF-Iw4">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="10002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UG0-lF-Iw4">
                                                     <rect key="frame" x="161" y="11" width="126" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
@@ -6046,11 +6046,38 @@
                     <view key="view" contentMode="scaleToFill" id="IpF-Er-Egg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="请输入要搜索的客户姓名" translatesAutoresizingMaskIntoConstraints="NO" id="e9h-yh-fs7">
+                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Ubs-E3-r4v" id="ZEO-fx-o8Z"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="e9h-yh-fs7" firstAttribute="leading" secondItem="IpF-Er-Egg" secondAttribute="leading" id="H5s-JQ-O9f"/>
+                            <constraint firstItem="e9h-yh-fs7" firstAttribute="top" secondItem="7UY-zr-l5L" secondAttribute="bottom" id="VTx-li-u3W"/>
+                            <constraint firstAttribute="trailing" secondItem="e9h-yh-fs7" secondAttribute="trailing" id="kBH-GJ-YQ2"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="地图" id="D3q-5b-2zN"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="Kul-48-KDJ" id="bfg-Qa-sQH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JjN-c0-s4d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="Kul-48-KDJ">
+                    <connections>
+                        <outlet property="delegate" destination="Ubs-E3-r4v" id="4wS-Ob-fch"/>
+                        <outlet property="searchBar" destination="e9h-yh-fs7" id="QCH-AZ-Tuq"/>
+                        <outlet property="searchContentsController" destination="Ubs-E3-r4v" id="H1e-wd-F0A"/>
+                        <outlet property="searchResultsDataSource" destination="Ubs-E3-r4v" id="Y4J-Gd-083"/>
+                        <outlet property="searchResultsDelegate" destination="Ubs-E3-r4v" id="MZX-RU-TMq"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="-453" y="197"/>
         </scene>

@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 Mirror. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseMapViewController.h"
 
-@interface CPGlobalMapViewController : UIViewController
+@interface CPGlobalMapViewController : BaseMapViewController
 
 @end
