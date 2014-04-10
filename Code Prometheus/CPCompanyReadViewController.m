@@ -10,6 +10,7 @@
 #import "CPCompany.h"
 #import "CPReadMapViewController.h"
 #import <TWMessageBarManager.h>
+#import "CPContacts.h"
 
 // 年收入
 static NSString* const CP_COMPANY_INCOME_TITLE_0 = @"10万以下";
@@ -169,9 +170,14 @@ static NSString* const CP_COMPANY_WORKER_AMOUNT_TITLE_5 = @"2000人以上";
         return;
     }
     CPReadMapViewController* map = [[CPReadMapViewController alloc] initWithNibName:nil bundle:nil];
-    map.name = self.company.cp_address_name;
-    map.longitude = self.company.cp_longitude;
-    map.latitude = self.company.cp_latitude;
+    CPPointAnnotation* annotation = [[CPPointAnnotation alloc] init];
+    CPContacts* contacts = [[CPDB getLKDBHelperByUser] searchSingle:[CPContacts class] where:@{@"cp_uuid":self.contactsUUID} orderBy:nil];
+    annotation.uuid = contacts.cp_uuid;
+    annotation.title = contacts.cp_name;
+    annotation.subtitle = self.company.cp_address_name;
+    annotation.coordinate = CLLocationCoordinate2DMake(self.company.cp_latitude.doubleValue, self.company.cp_longitude.doubleValue);
+    annotation.type = CPPointAnnotationTypeCompany;
+    map.cpAnnotation = annotation;
     [self.navigationController pushViewController:map animated:YES];
 }
 

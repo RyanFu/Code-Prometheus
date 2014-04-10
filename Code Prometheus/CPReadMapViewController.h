@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseMapViewController.h"
+#import "CPCusAnnotationView.h"
 
 @interface CPReadMapViewController : BaseMapViewController
-@property(nonatomic) NSString* name;
-@property(nonatomic) NSString* longitude;
-@property(nonatomic) NSString* latitude;
+@property(nonatomic) CPPointAnnotation* cpAnnotation;
 @end

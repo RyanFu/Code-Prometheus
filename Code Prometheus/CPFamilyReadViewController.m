@@ -13,6 +13,7 @@
 #import "CPReadMapViewController.h"
 #import <MBProgressHUD.h>
 #import <TWMessageBarManager.h>
+#import "CPContacts.h"
 
 // 生日
 static NSString* const CP_DATE_TITLE_NULL = @"未定义";
@@ -230,9 +231,14 @@ static NSString* const CP_FAMILY_MARRIAGE_TITLE_WIDOWED = @"丧偶";
         return;
     }
     CPReadMapViewController* map = [[CPReadMapViewController alloc] initWithNibName:nil bundle:nil];
-    map.name = self.family.cp_address_name;
-    map.longitude = self.family.cp_longitude;
-    map.latitude = self.family.cp_latitude;
+    CPPointAnnotation* annotation = [[CPPointAnnotation alloc] init];
+    CPContacts* contacts = [[CPDB getLKDBHelperByUser] searchSingle:[CPContacts class] where:@{@"cp_uuid":self.contactsUUID} orderBy:nil];
+    annotation.uuid = contacts.cp_uuid;
+    annotation.title = contacts.cp_name;
+    annotation.subtitle = self.family.cp_address_name;
+    annotation.coordinate = CLLocationCoordinate2DMake(self.family.cp_latitude.doubleValue, self.family.cp_longitude.doubleValue);
+    annotation.type = CPPointAnnotationTypeFamily;
+    map.cpAnnotation = annotation;
     [self.navigationController pushViewController:map animated:YES];
 }
 @end
