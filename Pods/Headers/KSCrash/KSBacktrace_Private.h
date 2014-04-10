@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSBacktrace_Private.h
+../../KSCrash/Source/KSCrash/Recording/Tools/KSBacktrace_Private.h

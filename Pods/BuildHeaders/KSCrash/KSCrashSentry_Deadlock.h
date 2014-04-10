@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSCrashSentry_Deadlock.h
+../../KSCrash/Source/KSCrash/Recording/Sentry/KSCrashSentry_Deadlock.h

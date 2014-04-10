@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSCString.h
+../../KSCrash/Source/KSCrash/Reporting/Tools/KSCString.h

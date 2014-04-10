@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSCrashReportSinkConsole.h
+../../KSCrash/Source/KSCrash/Reporting/Sinks/KSCrashReportSinkConsole.h

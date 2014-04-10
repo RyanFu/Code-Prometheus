@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSBacktrace.h
+../../KSCrash/Source/KSCrash/Recording/Tools/KSBacktrace.h

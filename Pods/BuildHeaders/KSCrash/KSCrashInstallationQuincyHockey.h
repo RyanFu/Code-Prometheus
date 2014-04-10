@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSCrashInstallationQuincyHockey.h
+../../KSCrash/Source/KSCrash/Installations/KSCrashInstallationQuincyHockey.h

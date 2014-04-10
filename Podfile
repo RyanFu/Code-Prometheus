@@ -20,7 +20,7 @@ pod 'TDBadgedCell', '2.4.1'
 pod 'TWMessageBarManager', '1.3.0'
 pod 'RHAddressBook', '1.0.4'
 pod 'Reachability', '3.1.1'
-pod 'KSCrash', '0.0.1'
+pod 'KSCrash', '0.0.3'
 pod 'JSONKit-NoWarning', '1.1'
 pod 'OpenUDID', '1.0.0'
 

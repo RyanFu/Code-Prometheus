@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/NSError+SimpleConstructor.h
+../../KSCrash/Source/KSCrash/Recording/Tools/NSError+SimpleConstructor.h

@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSCrashReportFields.h
+../../KSCrash/Source/KSCrash/Recording/KSCrashReportFields.h

@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/ARCSafe_MemMgmt.h
+../../KSCrash/Source/KSCrash/Recording/Tools/ARCSafe_MemMgmt.h

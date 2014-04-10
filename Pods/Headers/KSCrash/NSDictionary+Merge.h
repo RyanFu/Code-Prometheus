@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/NSDictionary+Merge.h
+../../KSCrash/Source/KSCrash/Recording/Tools/NSDictionary+Merge.h

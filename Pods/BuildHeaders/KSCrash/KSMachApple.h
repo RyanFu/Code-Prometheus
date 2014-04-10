@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSMachApple.h
+../../KSCrash/Source/KSCrash/Recording/Tools/KSMachApple.h

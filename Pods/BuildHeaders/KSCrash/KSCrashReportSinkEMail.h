@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSCrashReportSinkEMail.h
+../../KSCrash/Source/KSCrash/Reporting/Sinks/KSCrashReportSinkEMail.h

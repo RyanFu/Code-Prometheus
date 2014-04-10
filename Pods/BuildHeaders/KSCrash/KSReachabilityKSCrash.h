@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSReachabilityKSCrash.h
+../../KSCrash/Source/KSCrash/Reporting/Tools/KSReachabilityKSCrash.h

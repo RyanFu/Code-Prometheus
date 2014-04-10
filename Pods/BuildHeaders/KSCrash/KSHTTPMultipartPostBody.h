@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSHTTPMultipartPostBody.h
+../../KSCrash/Source/KSCrash/Reporting/Tools/KSHTTPMultipartPostBody.h

@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSCrashInstallationEmail.h
+../../KSCrash/Source/KSCrash/Installations/KSCrashInstallationEmail.h

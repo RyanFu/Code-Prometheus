@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSCrashReportSinkQuincyHockey.h
+../../KSCrash/Source/KSCrash/Reporting/Sinks/KSCrashReportSinkQuincyHockey.h

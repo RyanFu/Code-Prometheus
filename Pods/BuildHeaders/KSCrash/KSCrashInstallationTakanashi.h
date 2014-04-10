@@ -1,1 +1,0 @@
-../../KSCrash/KSCrash/KSCrash/KSCrashInstallationTakanashi.h

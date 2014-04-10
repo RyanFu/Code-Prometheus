@@ -12,8 +12,10 @@ of a lot more that they COULD do. Here are some key features of KSCrash:
 * On-device symbolication in a way that supports re-symbolication offline
   (necessary for iOS versions where many functions have been redacted).
 * Generates full Apple reports, with every field filled in.
+* 32-bit and 64-bit mode (EXPERIMENTAL).
 * Handles errors that can only be caught at the mach level, such as stack
   overflow.
+* Tracks the REAL cause of an uncaught C++ exception.
 * Handles a crash in the crash handler itself (or in the user crash handler
   callback).
 * Detects zombie (deallocated) object access attempts.
@@ -23,8 +25,7 @@ of a lot more that they COULD do. Here are some key features of KSCrash:
 * Extracts information about objects referenced by an exception (such as
   "unrecognized selector sent to instance 0xa26d9a0")
 * Its pluggable server reporting architecture makes it easy to adapt to any API
-  service (it already supports Hockey and Quincy and sending via email, with
-  more to come!).
+  service.
 * Dumps the stack contents.
 * Diagnoses crash causes (Crash Doctor).
 * Records lots of information beyond what the Apple crash report can, in a JSON
@@ -32,7 +33,7 @@ of a lot more that they COULD do. Here are some key features of KSCrash:
 * Supports including extra data that the programmer supplies (before and during
   a crash).
 
-KSCrash handles the following kinds of crashes:
+#### KSCrash handles the following kinds of crashes:
 
 * Mach kernel exceptions
 * Fatal signals
@@ -41,22 +42,93 @@ KSCrash handles the following kinds of crashes:
 * Main thread deadlock (experimental)
 * Custom crashes (e.g. from scripting languages)
 
+#### KSCrash can report to the following servers:
+
+* [Hockey](http://hockeyapp.net/)
+* [QuincyKit](https://github.com/TheRealKerni/QuincyKit)
+* [Victory](https://github.com/kelp404/Victory)
+* Email
+
 [Here are some examples of the reports it can generate.](https://github.com/kstenerud/KSCrash/tree/master/Example-Reports/_README.md)
 
 
-### Beta Note
+### What's New?
 
-Although it's now being shipped in production apps, KSCrash is still
-officially considered "beta" software because there are a few more
-things to do before releasing version 1.0.
+#### C++ Exception Handling
 
-The following feature has been causing problems. Please don't use it until
-I've found a more robust solution.
+That's right! Normally if your app terminates due to an uncaught C++ exception,
+all you get is this:
+
+    Thread 0 name:  Dispatch queue: com.apple.main-thread
+    Thread 0 Crashed:
+    0   libsystem_kernel.dylib          0x9750ea6a 0x974fa000 + 84586 (__pthread_kill + 10)
+    1   libsystem_sim_c.dylib           0x04d56578 0x4d0f000 + 292216 (abort + 137)
+    2   libc++abi.dylib                 0x04ed6f78 0x4ed4000 + 12152 (abort_message + 102)
+    3   libc++abi.dylib                 0x04ed4a20 0x4ed4000 + 2592 (_ZL17default_terminatev + 29)
+    4   libobjc.A.dylib                 0x013110d0 0x130b000 + 24784 (_ZL15_objc_terminatev + 109)
+    5   libc++abi.dylib                 0x04ed4a60 0x4ed4000 + 2656 (_ZL19safe_handler_callerPFvvE + 8)
+    6   libc++abi.dylib                 0x04ed4ac8 0x4ed4000 + 2760 (_ZSt9terminatev + 18)
+    7   libc++abi.dylib                 0x04ed5c48 0x4ed4000 + 7240 (__cxa_rethrow + 77)
+    8   libobjc.A.dylib                 0x01310fb8 0x130b000 + 24504 (objc_exception_rethrow + 42)
+    9   CoreFoundation                  0x01f2af98 0x1ef9000 + 204696 (CFRunLoopRunSpecific + 360)
+    ...
+
+No way to track what the exception was or where it was thrown from!
+
+Now with KSCrash, you get the uncaught exception type, description, and where it was thrown from:
+
+    Application Specific Information:
+    *** Terminating app due to uncaught exception 'MyException', reason: 'Something bad happened...'
+
+    Thread 0 name:  Dispatch queue: com.apple.main-thread
+    Thread 0 Crashed:
+    0   Crash-Tester                    0x0000ad80 0x1000 + 40320 (-[Crasher throwUncaughtCPPException] + 0)
+    1   Crash-Tester                    0x0000842e 0x1000 + 29742 (__32-[AppDelegate(UI) crashCommands]_block_invoke343 + 78)
+    2   Crash-Tester                    0x00009523 0x1000 + 34083 (-[CommandEntry executeWithViewController:] + 67)
+    3   Crash-Tester                    0x00009c0a 0x1000 + 35850 (-[CommandTVC tableView:didSelectRowAtIndexPath:] + 154)
+    4   UIKit                           0x0016f285 0xb4000 + 766597 (-[UITableView _selectRowAtIndexPath:animated:scrollPosition:notifyDelegate:] + 1194)
+    5   UIKit                           0x0016f4ed 0xb4000 + 767213 (-[UITableView _userSelectRowAtPendingSelectionIndexPath:] + 201)
+    6   Foundation                      0x00b795b3 0xb6e000 + 46515 (__NSFireDelayedPerform + 380)
+    7   CoreFoundation                  0x01f45376 0x1efa000 + 308086 (__CFRUNLOOP_IS_CALLING_OUT_TO_A_TIMER_CALLBACK_FUNCTION__ + 22)
+    8   CoreFoundation                  0x01f44e06 0x1efa000 + 306694 (__CFRunLoopDoTimer + 534)
+    9   CoreFoundation                  0x01f2ca82 0x1efa000 + 207490 (__CFRunLoopRun + 1810)
+    10  CoreFoundation                  0x01f2bf44 0x1efa000 + 204612 (CFRunLoopRunSpecific + 276)
+    ...
+
+#### Handy C++ development helper
+
+If you turn on trace printing:
+
+    [KSCrash sharedInstance].printTraceToStdout = YES;
+
+It will print a proper stack trace to stdout whenever your app throws an
+uncaught C++ exception! Otherwise the debugger will only lead you to where the
+exception was rethrown.
+
+#### Custom Crashes & Stack Traces
+
+You can now report your own custom crashes and stack traces (think scripting
+languages):
+
+    - (void) reportUserException:(NSString*) name
+                          reason:(NSString*) reason
+                      lineOfCode:(NSString*) lineOfCode
+                      stackTrace:(NSArray*) stackTrace
+                terminateProgram:(BOOL) terminateProgram;
+
+See KSCrash.h for details.
+
+
+### Unstable Features
+
+The following features should be considered "unstable" and are disabled by default:
 
 - Deadlock detection
 
-Also, the backend side is not done yet, though Hockey, Quincy, and email
-integration is fully implemented and working (more on the way as time allows).
+
+### 64-bit ARM Support
+
+64-bit ARM support is EXPERIMENTAL. Although it compiles and runs in 64-bit mode in the simulator, I don't have an iPhone 5 to test with.
 
 
 ### Incompatible API Change Notice
@@ -89,10 +161,16 @@ How to Use KSCrash
 
 1. Add the framework to your project (or add the KSCrash project as a
    dependency)
+   
+2. Add the following system frameworks & libraries to your project:
+   * libc++.dylib
+   * libz.dylib
+   * MessageUI.framework (iOS only)
+   * SystemConfiguration.framework
 
-2. Add the flag "-ObjC" to **Other Linker Flags** in your **Build Settings**
+3. Add the flag "-ObjC" to **Other Linker Flags** in your **Build Settings**
 
-3. Add the following to your **[application: didFinishLaunchingWithOptions:]**
+4. Add the following to your **[application: didFinishLaunchingWithOptions:]**
    method in your app delegate:
 
 .
@@ -104,8 +182,8 @@ How to Use KSCrash
     #import <KSCrash/KSCrashInstallationQuincyHockey.h>
     // Include to use the email reporter.
     #import <KSCrash/KSCrashInstallationEmail.h>
-    // Include to use Takanashi.
-    #import <KSCrash/KSCrashInstallationTakanashi.h>
+    // Include to use Victory.
+    #import <KSCrash/KSCrashInstallationVictory.h>
 
 	- (BOOL)application:(UIApplication*) application didFinishLaunchingWithOptions:(NSDictionary*) launchOptions
 	{
@@ -138,7 +216,7 @@ How to Use KSCrash
 
       // OR:
 
-      KSCrashInstallationTakanashi* installation = [KSCrashInstallationTakanashi sharedInstance];
+      KSCrashInstallationVictory* installation = [KSCrashInstallationVictory sharedInstance];
       installation.url = [NSURL URLWithString:@"https://put.your.url.here/api/v1/crash/<application key>"];
 
       [installation install];
@@ -220,6 +298,10 @@ Trade off: Zombie tracking at the cost of adding very slight overhead to object
 
 
 #### Deadlock Detection (deadlockWatchdogInterval in KSCrash.h)
+
+**WARNING WARNING WARNING WARNING WARNING WARNING WARNING**
+
+**This feature is UNSTABLE! It can false-positive and crash your app!**
 
 If your main thread deadlocks, your user interface will become unresponsive,
 and the user will have to manually shut down the app (for which there will be

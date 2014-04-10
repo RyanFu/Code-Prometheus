@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSZombie.h
+../../KSCrash/Source/KSCrash/Recording/Tools/KSZombie.h

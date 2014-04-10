@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSSignalInfo.h
+../../KSCrash/Source/KSCrash/Recording/Tools/KSSignalInfo.h

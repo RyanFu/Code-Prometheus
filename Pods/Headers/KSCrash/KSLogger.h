@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSLogger.h
+../../KSCrash/Source/KSCrash/Recording/Tools/KSLogger.h

@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSHTTPRequestSender.h
+../../KSCrash/Source/KSCrash/Reporting/Tools/KSHTTPRequestSender.h

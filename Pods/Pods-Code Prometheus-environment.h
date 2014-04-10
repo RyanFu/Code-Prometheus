@@ -91,7 +91,85 @@
 #define COCOAPODS_POD_AVAILABLE_KSCrash
 #define COCOAPODS_VERSION_MAJOR_KSCrash 0
 #define COCOAPODS_VERSION_MINOR_KSCrash 0
-#define COCOAPODS_VERSION_PATCH_KSCrash 1
+#define COCOAPODS_VERSION_PATCH_KSCrash 3
+
+// KSCrash/Installations
+#define COCOAPODS_POD_AVAILABLE_KSCrash_Installations
+#define COCOAPODS_VERSION_MAJOR_KSCrash_Installations 0
+#define COCOAPODS_VERSION_MINOR_KSCrash_Installations 0
+#define COCOAPODS_VERSION_PATCH_KSCrash_Installations 3
+
+// KSCrash/Recording
+#define COCOAPODS_POD_AVAILABLE_KSCrash_Recording
+#define COCOAPODS_VERSION_MAJOR_KSCrash_Recording 0
+#define COCOAPODS_VERSION_MINOR_KSCrash_Recording 0
+#define COCOAPODS_VERSION_PATCH_KSCrash_Recording 3
+
+// KSCrash/Reporting
+#define COCOAPODS_POD_AVAILABLE_KSCrash_Reporting
+#define COCOAPODS_VERSION_MAJOR_KSCrash_Reporting 0
+#define COCOAPODS_VERSION_MINOR_KSCrash_Reporting 0
+#define COCOAPODS_VERSION_PATCH_KSCrash_Reporting 3
+
+// KSCrash/Reporting/Filters
+#define COCOAPODS_POD_AVAILABLE_KSCrash_Reporting_Filters
+#define COCOAPODS_VERSION_MAJOR_KSCrash_Reporting_Filters 0
+#define COCOAPODS_VERSION_MINOR_KSCrash_Reporting_Filters 0
+#define COCOAPODS_VERSION_PATCH_KSCrash_Reporting_Filters 3
+
+// KSCrash/Reporting/Filters/Alert
+#define COCOAPODS_POD_AVAILABLE_KSCrash_Reporting_Filters_Alert
+#define COCOAPODS_VERSION_MAJOR_KSCrash_Reporting_Filters_Alert 0
+#define COCOAPODS_VERSION_MINOR_KSCrash_Reporting_Filters_Alert 0
+#define COCOAPODS_VERSION_PATCH_KSCrash_Reporting_Filters_Alert 3
+
+// KSCrash/Reporting/Filters/AppleFmt
+#define COCOAPODS_POD_AVAILABLE_KSCrash_Reporting_Filters_AppleFmt
+#define COCOAPODS_VERSION_MAJOR_KSCrash_Reporting_Filters_AppleFmt 0
+#define COCOAPODS_VERSION_MINOR_KSCrash_Reporting_Filters_AppleFmt 0
+#define COCOAPODS_VERSION_PATCH_KSCrash_Reporting_Filters_AppleFmt 3
+
+// KSCrash/Reporting/Filters/Base
+#define COCOAPODS_POD_AVAILABLE_KSCrash_Reporting_Filters_Base
+#define COCOAPODS_VERSION_MAJOR_KSCrash_Reporting_Filters_Base 0
+#define COCOAPODS_VERSION_MINOR_KSCrash_Reporting_Filters_Base 0
+#define COCOAPODS_VERSION_PATCH_KSCrash_Reporting_Filters_Base 3
+
+// KSCrash/Reporting/Filters/Basic
+#define COCOAPODS_POD_AVAILABLE_KSCrash_Reporting_Filters_Basic
+#define COCOAPODS_VERSION_MAJOR_KSCrash_Reporting_Filters_Basic 0
+#define COCOAPODS_VERSION_MINOR_KSCrash_Reporting_Filters_Basic 0
+#define COCOAPODS_VERSION_PATCH_KSCrash_Reporting_Filters_Basic 3
+
+// KSCrash/Reporting/Filters/GZip
+#define COCOAPODS_POD_AVAILABLE_KSCrash_Reporting_Filters_GZip
+#define COCOAPODS_VERSION_MAJOR_KSCrash_Reporting_Filters_GZip 0
+#define COCOAPODS_VERSION_MINOR_KSCrash_Reporting_Filters_GZip 0
+#define COCOAPODS_VERSION_PATCH_KSCrash_Reporting_Filters_GZip 3
+
+// KSCrash/Reporting/Filters/JSON
+#define COCOAPODS_POD_AVAILABLE_KSCrash_Reporting_Filters_JSON
+#define COCOAPODS_VERSION_MAJOR_KSCrash_Reporting_Filters_JSON 0
+#define COCOAPODS_VERSION_MINOR_KSCrash_Reporting_Filters_JSON 0
+#define COCOAPODS_VERSION_PATCH_KSCrash_Reporting_Filters_JSON 3
+
+// KSCrash/Reporting/Filters/Sets
+#define COCOAPODS_POD_AVAILABLE_KSCrash_Reporting_Filters_Sets
+#define COCOAPODS_VERSION_MAJOR_KSCrash_Reporting_Filters_Sets 0
+#define COCOAPODS_VERSION_MINOR_KSCrash_Reporting_Filters_Sets 0
+#define COCOAPODS_VERSION_PATCH_KSCrash_Reporting_Filters_Sets 3
+
+// KSCrash/Reporting/Sinks
+#define COCOAPODS_POD_AVAILABLE_KSCrash_Reporting_Sinks
+#define COCOAPODS_VERSION_MAJOR_KSCrash_Reporting_Sinks 0
+#define COCOAPODS_VERSION_MINOR_KSCrash_Reporting_Sinks 0
+#define COCOAPODS_VERSION_PATCH_KSCrash_Reporting_Sinks 3
+
+// KSCrash/Reporting/Tools
+#define COCOAPODS_POD_AVAILABLE_KSCrash_Reporting_Tools
+#define COCOAPODS_VERSION_MAJOR_KSCrash_Reporting_Tools 0
+#define COCOAPODS_VERSION_MINOR_KSCrash_Reporting_Tools 0
+#define COCOAPODS_VERSION_PATCH_KSCrash_Reporting_Tools 3
 
 // MBProgressHUD
 #define COCOAPODS_POD_AVAILABLE_MBProgressHUD

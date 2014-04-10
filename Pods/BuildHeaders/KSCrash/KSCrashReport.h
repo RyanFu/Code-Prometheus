@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSCrashReport.h
+../../KSCrash/Source/KSCrash/Recording/KSCrashReport.h

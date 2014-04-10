@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSCrashCallCompletion.h
+../../KSCrash/Source/KSCrash/Recording/Tools/KSCrashCallCompletion.h

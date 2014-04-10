@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSObjCApple.h
+../../KSCrash/Source/KSCrash/Recording/Tools/KSObjCApple.h

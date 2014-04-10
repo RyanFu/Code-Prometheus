@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSArchSpecific.h
+../../KSCrash/Source/KSCrash/Recording/Tools/KSArchSpecific.h

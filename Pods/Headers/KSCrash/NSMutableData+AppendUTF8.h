@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/NSMutableData+AppendUTF8.h
+../../KSCrash/Source/KSCrash/Reporting/Tools/NSMutableData+AppendUTF8.h

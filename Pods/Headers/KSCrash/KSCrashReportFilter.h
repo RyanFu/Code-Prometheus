@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSCrashReportFilter.h
+../../KSCrash/Source/KSCrash/Reporting/Filters/KSCrashReportFilter.h

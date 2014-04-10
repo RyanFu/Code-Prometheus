@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/Container+DeepSearch.h
+../../KSCrash/Source/KSCrash/Reporting/Filters/Tools/Container+DeepSearch.h

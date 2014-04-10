@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSCrashReportFilterAppleFmt.h
+../../KSCrash/Source/KSCrash/Reporting/Filters/KSCrashReportFilterAppleFmt.h

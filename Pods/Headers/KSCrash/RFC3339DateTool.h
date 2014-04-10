@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/RFC3339DateTool.h
+../../KSCrash/Source/KSCrash/Recording/Tools/RFC3339DateTool.h

@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSCrashInstallation+Private.h
+../../KSCrash/Source/KSCrash/Installations/KSCrashInstallation+Private.h

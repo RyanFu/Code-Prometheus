@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSJSONCodecObjC.h
+../../KSCrash/Source/KSCrash/Recording/Tools/KSJSONCodecObjC.h

@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSCrashSentry_NSException.h
+../../KSCrash/Source/KSCrash/Recording/Sentry/KSCrashSentry_NSException.h

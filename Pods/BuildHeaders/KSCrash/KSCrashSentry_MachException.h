@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSCrashSentry_MachException.h
+../../KSCrash/Source/KSCrash/Recording/Sentry/KSCrashSentry_MachException.h

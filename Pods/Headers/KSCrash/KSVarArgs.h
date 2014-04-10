@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSVarArgs.h
+../../KSCrash/Source/KSCrash/Reporting/Filters/Tools/KSVarArgs.h

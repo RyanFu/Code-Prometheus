@@ -1,1 +1,1 @@
-../../KSCrash/KSCrash/KSCrash/KSSafeCollections.h
+../../KSCrash/Source/KSCrash/Recording/Tools/KSSafeCollections.h
