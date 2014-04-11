@@ -197,7 +197,7 @@ typedef NS_ENUM(NSInteger, CPGlobalMapModel) {
     
     // 家庭地址
     [[CPDB getLKDBHelperByUser] executeDB:^(FMDatabase *db) {
-        FMResultSet* set = [db executeQuery:@"SELECT c.cp_uuid,c.cp_name,f.cp_longitude,f.cp_latitude,f.cp_address_name FROM cp_contacts c INNER JOIN cp_family f ON f.cp_contact_uuid = c.cp_uuid WHERE f.cp_longitude NOTNULL AND f.cp_longitude != '' AND f.cp_latitude NOTNULL AND f.cp_latitude != '' AND CAST(f.cp_longitude AS NUMERIC)>=? AND CAST(f.cp_longitude AS NUMERIC) <=? AND CAST(f.cp_latitude AS NUMERIC)>=? AND CAST(f.cp_latitude AS NUMERIC)<=?" withArgumentsInArray:@[@(left),@(right),@(bottom),@(top)]];
+        FMResultSet* set = [db executeQuery:@"SELECT c.cp_uuid,c.cp_name,f.cp_longitude,f.cp_latitude,f.cp_address_name FROM cp_contacts c INNER JOIN cp_family f ON f.cp_contact_uuid = c.cp_uuid WHERE f.cp_invain NOTNULL AND f.cp_invain == 1 AND CAST(f.cp_longitude AS NUMERIC)>=? AND CAST(f.cp_longitude AS NUMERIC) <=? AND CAST(f.cp_latitude AS NUMERIC)>=? AND CAST(f.cp_latitude AS NUMERIC)<=?" withArgumentsInArray:@[@(left),@(right),@(bottom),@(top)]];
         
         
         int columeCount = [set columnCount];
@@ -241,7 +241,7 @@ typedef NS_ENUM(NSInteger, CPGlobalMapModel) {
     
     // 公司地址
     [[CPDB getLKDBHelperByUser] executeDB:^(FMDatabase *db) {
-        FMResultSet* set = [db executeQuery:@"SELECT c.cp_uuid,c.cp_name,f.cp_longitude,f.cp_latitude,f.cp_address_name FROM cp_contacts c INNER JOIN cp_company f ON f.cp_contact_uuid = c.cp_uuid WHERE f.cp_longitude NOTNULL AND f.cp_longitude != '' AND f.cp_latitude NOTNULL AND f.cp_latitude != '' AND CAST(f.cp_longitude AS NUMERIC)>=? AND CAST(f.cp_longitude AS NUMERIC) <=? AND CAST(f.cp_latitude AS NUMERIC)>=? AND CAST(f.cp_latitude AS NUMERIC)<=?" withArgumentsInArray:@[@(left),@(right),@(bottom),@(top)]];
+        FMResultSet* set = [db executeQuery:@"SELECT c.cp_uuid,c.cp_name,f.cp_longitude,f.cp_latitude,f.cp_address_name FROM cp_contacts c INNER JOIN cp_company f ON f.cp_contact_uuid = c.cp_uuid WHERE f.cp_invain NOTNULL AND f.cp_invain == 1 AND CAST(f.cp_longitude AS NUMERIC)>=? AND CAST(f.cp_longitude AS NUMERIC) <=? AND CAST(f.cp_latitude AS NUMERIC)>=? AND CAST(f.cp_latitude AS NUMERIC)<=?" withArgumentsInArray:@[@(left),@(right),@(bottom),@(top)]];
         
         int columeCount = [set columnCount];
         while ([set next]) {
@@ -286,7 +286,7 @@ typedef NS_ENUM(NSInteger, CPGlobalMapModel) {
 -(void) findAnnotationByContacts{
     CPContacts* contacts = self.contacts;
     self.annotationArray = [NSMutableArray array];
-    CPFamily* family = [[CPDB getLKDBHelperByUser] searchSingle:[CPFamily class] where:[NSString stringWithFormat:@"cp_contact_uuid = '%@' AND cp_longitude NOTNULL AND cp_longitude != '' AND cp_latitude NOTNULL AND cp_latitude != ''",contacts.cp_uuid] orderBy:nil];
+    CPFamily* family = [[CPDB getLKDBHelperByUser] searchSingle:[CPFamily class] where:[NSString stringWithFormat:@"cp_contact_uuid = '%@' AND cp_invain NOTNULL AND cp_invain == 1",contacts.cp_uuid] orderBy:nil];
     if (family) {
         CPPointAnnotation* annotation = [[CPPointAnnotation alloc] init];
         annotation.uuid = contacts.cp_uuid;
@@ -296,7 +296,7 @@ typedef NS_ENUM(NSInteger, CPGlobalMapModel) {
         annotation.type = CPPointAnnotationTypeFamily;
         [self.annotationArray addObject:annotation];
     }
-    CPCompany* company = [[CPDB getLKDBHelperByUser] searchSingle:[CPCompany class] where:[NSString stringWithFormat:@"cp_contact_uuid = '%@' AND cp_longitude NOTNULL AND cp_longitude != '' AND cp_latitude NOTNULL AND cp_latitude != ''",contacts.cp_uuid] orderBy:nil];
+    CPCompany* company = [[CPDB getLKDBHelperByUser] searchSingle:[CPCompany class] where:[NSString stringWithFormat:@"cp_contact_uuid = '%@' AND cp_invain NOTNULL AND cp_invain == 1",contacts.cp_uuid] orderBy:nil];
     if (company) {
         CPPointAnnotation* annotation = [[CPPointAnnotation alloc] init];
         annotation.uuid = contacts.cp_uuid;
@@ -309,7 +309,7 @@ typedef NS_ENUM(NSInteger, CPGlobalMapModel) {
 }
 -(void) loadContactsWithSearchString:(NSString*)searchString{
     [[CPDB getLKDBHelperByUser] executeDB:^(FMDatabase *db) {
-        FMResultSet* set = [db executeQuery:@"SELECT rowid,* FROM cp_contacts c WHERE c.cp_uuid IN(SELECT f.cp_contact_uuid FROM cp_family f LEFT OUTER JOIN cp_company com ON f.cp_contact_uuid = com.cp_contact_uuid WHERE f.cp_longitude NOTNULL AND f.cp_longitude != '' AND f.cp_latitude NOTNULL AND f.cp_latitude != '' UNION SELECT com.cp_contact_uuid FROM cp_company com LEFT OUTER JOIN  cp_family f ON f.cp_contact_uuid = com.cp_contact_uuid WHERE com.cp_longitude NOTNULL AND com.cp_longitude != '' AND com.cp_latitude NOTNULL AND com.cp_latitude != '')  AND c.cp_name LIKE ?" withArgumentsInArray:@[[NSString stringWithFormat:@"%%%@%%",searchString]]];
+        FMResultSet* set = [db executeQuery:@"SELECT rowid,* FROM cp_contacts c WHERE c.cp_uuid IN(SELECT f.cp_contact_uuid FROM cp_family f LEFT OUTER JOIN cp_company com ON f.cp_contact_uuid = com.cp_contact_uuid WHERE f.cp_invain NOTNULL AND f.cp_invain == 1 UNION SELECT com.cp_contact_uuid FROM cp_company com LEFT OUTER JOIN  cp_family f ON f.cp_contact_uuid = com.cp_contact_uuid WHERE com.cp_invain NOTNULL AND com.cp_invain == 1)  AND c.cp_name LIKE ?" withArgumentsInArray:@[[NSString stringWithFormat:@"%%%@%%",searchString]]];
         self.contactsArray = [[CPDB getLKDBHelperByUser] executeResult:set Class:[CPContacts class]];
         [set close];
     }];
