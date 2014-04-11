@@ -65,7 +65,7 @@
             make.left.equalTo(_title.mas_left);
             make.top.equalTo(_title.mas_top);
             make.bottom.equalTo(_title.mas_bottom);
-            
+            make.height.greaterThanOrEqualTo(@(30));
         }];
         
         _titleName = [[UILabel alloc] init];
@@ -87,6 +87,23 @@
         _titleImage.image = [UIImage imageNamed:@"cp_map_family"];
     }else if (cpAnnotation.type == CPPointAnnotationTypeCompany){
         _titleImage.image = [UIImage imageNamed:@"cp_map_company"];
+    }else if (cpAnnotation.type == CPPointAnnotationTypeNone){
+        _titleImage.image = nil;
+    }
+    if (cpAnnotation.type == CPPointAnnotationTypeNone) {
+        [_titleName mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_titleImage.mas_right);
+            make.centerY.equalTo(_title.mas_centerY);
+            make.right.equalTo(_title.mas_right);
+            make.width.lessThanOrEqualTo(@(320));
+        }];
+    }else{
+        [_titleName mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_titleImage.mas_right);
+            make.centerY.equalTo(_title.mas_centerY);
+            make.right.equalTo(_title.mas_right);
+            make.width.lessThanOrEqualTo(@(60));
+        }];
     }
     _titleName.text = cpAnnotation.title;
 }

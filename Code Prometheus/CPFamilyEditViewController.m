@@ -302,10 +302,17 @@ typedef NS_ENUM(NSInteger, CP_FAMILY_POPOVER_TAG) {
 - (IBAction)addressButtonClick:(id)sender {
     CPEditMapViewController* map = [[CPEditMapViewController alloc] initWithNibName:CP_RESOURCE_XIB_MAP_EDIT bundle:nil];
     map.delegate = self;
-    map.invain = self.family.cp_invain;
+    
+    if (self.family.cp_invain && [self.family.cp_invain boolValue]) {
+        CPPointAnnotation* annotation = [[CPPointAnnotation alloc] init];
+        annotation.uuid = nil;
+        annotation.title = self.family.cp_address_name;
+        annotation.subtitle = nil;
+        annotation.coordinate = CLLocationCoordinate2DMake(self.family.cp_latitude.doubleValue, self.family.cp_longitude.doubleValue);
+        annotation.type = CPPointAnnotationTypeNone;
+        map.cpAnnotation = annotation;
+    }
     map.name = self.family.cp_address_name;
-    map.longitude = self.family.cp_longitude;
-    map.latitude = self.family.cp_latitude;
     [self.navigationController pushViewController:map animated:YES];
 }
 - (IBAction)marriageButtonClick:(id)sender {

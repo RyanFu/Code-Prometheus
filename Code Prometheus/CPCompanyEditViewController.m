@@ -207,11 +207,17 @@ typedef NS_ENUM(NSInteger, CP_COMPANY_POPOVER_TAG) {
 
 - (IBAction)addressButtonClick:(id)sender {
     CPEditMapViewController* map = [[CPEditMapViewController alloc] initWithNibName:CP_RESOURCE_XIB_MAP_EDIT bundle:nil];
-    map.invain = self.company.cp_invain;
-    map.name = self.company.cp_address_name;
-    map.longitude = self.company.cp_longitude;
-    map.latitude = self.company.cp_latitude;
     map.delegate = self;
+    if (self.company.cp_invain && [self.company.cp_invain boolValue]) {
+        CPPointAnnotation* annotation = [[CPPointAnnotation alloc] init];
+        annotation.uuid = nil;
+        annotation.title = self.company.cp_address_name;
+        annotation.subtitle = nil;
+        annotation.coordinate = CLLocationCoordinate2DMake(self.company.cp_latitude.doubleValue, self.company.cp_longitude.doubleValue);
+        annotation.type = CPPointAnnotationTypeNone;
+        map.cpAnnotation = annotation;
+    }
+    map.name = self.company.cp_address_name;
     [self.navigationController pushViewController:map animated:YES];
 }
 

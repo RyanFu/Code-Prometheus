@@ -16,6 +16,14 @@
 @interface CPEditMapViewController ()<UITableViewDataSource,UISearchBarDelegate,UISearchDisplayDelegate>
 @property(nonatomic) MBProgressHUD* hud;
 @property (nonatomic, strong) NSMutableArray *tips;
+@property (nonatomic) BOOL goPoint;
+
+// 数据库点
+@property (nonatomic) NSMutableArray* annotationDB;
+// 点击的点
+@property (nonatomic) NSMutableArray* annotationTap;
+// 搜索的点
+@property (nonatomic) NSMutableArray* annotationSearch;
 @end
 
 @implementation CPEditMapViewController
@@ -36,33 +44,56 @@
     btnLongTap.minimumPressDuration = 0.5;
     [self.view addGestureRecognizer:btnLongTap];
     
-    if (self.invain && self.invain.boolValue) {
-        // 地址有效
-        MAPointAnnotation *pa = [[MAPointAnnotation alloc] init];
-        pa.coordinate = CLLocationCoordinate2DMake(self.latitude.doubleValue, self.longitude.doubleValue);
-        pa.title      = self.name;
-        [self.mapView addAnnotation:pa];
-        [self.mapView setCenterCoordinate:[pa coordinate] animated:NO];
-        [self.mapView selectAnnotation:pa animated:YES];
-    }else{
-        // 地址无效
-        if (self.name) {
-            NSString* addressName = [self.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-            if (![addressName isEqualToString:@""]) {
-                AMapGeocodeSearchRequest *geo = [[AMapGeocodeSearchRequest alloc] init];
-                geo.address = addressName;
-                [self.search AMapGeocodeSearch:geo];
-            }
+    self.goUserLocation = self.cpAnnotation == nil;
+    self.goPoint = self.cpAnnotation != nil;
+    
+    
+    if (!self.cpAnnotation && self.name) {
+        NSString* addressName = [self.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        if (![addressName isEqualToString:@""]) {
+            AMapGeocodeSearchRequest *geo = [[AMapGeocodeSearchRequest alloc] init];
+            geo.address = addressName;
+            [self.search AMapGeocodeSearch:geo];
         }
     }
+    // 数据库点
+    self.annotationDB = [NSMutableArray array];
+    if (self.cpAnnotation) {
+        [self.annotationDB addObject:self.cpAnnotation];
+    }
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (self.goPoint) {
+        [self.mapView setVisibleMapRect:MAMapRectMake(220880104, 101476980, 272496, 466656) animated:NO];
+        [self.mapView setCenterCoordinate:[self.cpAnnotation coordinate] animated:YES];
+        self.goPoint = NO;
+    }
+    [self updateMapView];
 }
 
-//- (void)didReceiveMemoryWarning
-//{
-//    [super didReceiveMemoryWarning];
-//    // 删除 map
-//    [self.mapView removeFromSuperview];
-//}
+-(void) updateMapView{
+    // 清空大头针
+    NSMutableArray* annotationForRemove = [@[] mutableCopy];
+    for (id <MAAnnotation> annotation in self.mapView.annotations) {
+        if ([annotation isKindOfClass:[MAPointAnnotation class]]) {
+            [annotationForRemove addObject:annotation];
+        }
+        if ([annotation isKindOfClass:[GeocodeAnnotation class]]) {
+            [annotationForRemove addObject:annotation];
+        }
+        if ([annotation isKindOfClass:[ReGeocodeAnnotation class]]) {
+            [annotationForRemove addObject:annotation];
+        }
+    }
+    [self.mapView removeAnnotations:annotationForRemove];
+    
+    // 添加大头针
+    [self.mapView addAnnotations:self.annotationDB];
+    [self.mapView addAnnotations:self.annotationTap];
+    [self.mapView addAnnotations:self.annotationSearch];
+}
+
 #pragma mark - private
 /* 输入提示 搜索.*/
 - (void)searchTipsWithKey:(NSString *)key
@@ -88,18 +119,18 @@
     
     [self.search AMapGeocodeSearch:geo];
 }
-- (void)clearAndSearchGeocodeWithKey:(NSString *)key
-{
-    /* 清除annotation. */
-    [self clear];
-    
-    [self searchGeocodeWithKey:key];
-}
-/* 清除annotation. */
-- (void)clear
-{
-    [self.mapView removeAnnotations:self.mapView.annotations];
-}
+//- (void)clearAndSearchGeocodeWithKey:(NSString *)key
+//{
+//    /* 清除annotation. */
+//    [self clear];
+//    
+//    [self searchGeocodeWithKey:key];
+//}
+///* 清除annotation. */
+//- (void)clear
+//{
+//    [self.mapView removeAnnotations:self.mapView.annotations];
+//}
 #pragma mark - IBAction
 -(IBAction) saveButtonClick:(UIButton*)sender{
     // 保存信息
@@ -170,7 +201,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AMapTip *tip = self.tips[indexPath.row];
-    [self clearAndSearchGeocodeWithKey:tip.name];
+//    [self clearAndSearchGeocodeWithKey:tip.name];
+    [self searchGeocodeWithKey:tip.name];
     [self.searchDisplayController setActive:NO animated:NO];
     self.searchDisplayController.searchBar.placeholder = tip.name;
 }
@@ -211,8 +243,9 @@
         [self.mapView setVisibleMapRect:[CommonUtility minMapRectForAnnotations:annotations]
                                animated:YES];
     }
-    
-    [self.mapView addAnnotations:annotations];
+    self.annotationSearch = annotations;
+    [self updateMapView];
+//    [self.mapView addAnnotations:annotations];
 }
 /* 逆地理编码回调. */
 - (void)onReGeocodeSearchDone:(AMapReGeocodeSearchRequest *)request response:(AMapReGeocodeSearchResponse *)response
@@ -222,16 +255,11 @@
     self.hud = nil;
     if (response.regeocode != nil)
     {
-        // 删除上个点击的大头针
-        for (id<MAAnnotation> an in [self.mapView annotations]) {
-            if ([an isKindOfClass:[ReGeocodeAnnotation class]]) {
-                [self.mapView removeAnnotation:an];
-            }
-        }
         CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(request.location.latitude, request.location.longitude);
         ReGeocodeAnnotation *reGeocodeAnnotation = [[ReGeocodeAnnotation alloc] initWithCoordinate:coordinate reGeocode:response.regeocode];
         
-        [self.mapView addAnnotation:reGeocodeAnnotation];
+        self.annotationTap = [@[reGeocodeAnnotation] mutableCopy];
+        [self updateMapView];
         [self.mapView selectAnnotation:reGeocodeAnnotation animated:YES];
     }
 }
@@ -245,50 +273,63 @@
 
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
 {
+    static NSString *customReuseIndetifier = @"customReuseIndetifier";
+    CPCusAnnotationView *annotationView = nil;
+    
     // 用户点击的点
     if ([annotation isKindOfClass:[ReGeocodeAnnotation class]])
     {
-        static NSString *invertGeoIdentifier = @"invertGeoIdentifier";
-        MAPinAnnotationView *poiAnnotationView = (MAPinAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:invertGeoIdentifier];
-        if (poiAnnotationView == nil)
+        annotationView = (CPCusAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
+        if (annotationView == nil)
         {
-            poiAnnotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:invertGeoIdentifier];
-            poiAnnotationView.animatesDrop   = YES;
-            poiAnnotationView.canShowCallout = YES;
-//            poiAnnotationView.image = [UIImage imageNamed:CP_RESOURCE_IMAGE_MAP_SELECT_0];
-//            poiAnnotationView.centerOffset = CGPointMake(0, -22);
+#warning 这里每次都执行？ 影响效率
+            annotationView = [[CPCusAnnotationView alloc] initWithAnnotation:annotation
+                                                             reuseIdentifier:customReuseIndetifier];
         }
         
-        return poiAnnotationView;
+        ReGeocodeAnnotation* geocodeAnnotation = annotation;
+        CPPointAnnotation* cpAnnotation = [[CPPointAnnotation alloc] init];
+        cpAnnotation.uuid = nil;
+        cpAnnotation.title = geocodeAnnotation.title;
+        cpAnnotation.subtitle = geocodeAnnotation.subtitle;
+        cpAnnotation.coordinate = geocodeAnnotation.coordinate;
+        cpAnnotation.type = CPPointAnnotationTypeNone;
+        annotationView.cpAnnotation = cpAnnotation;
+        return annotationView;
     }
     // 地理搜索的点
     if ([annotation isKindOfClass:[GeocodeAnnotation class]])
     {
-        static NSString *geoCellIdentifier = @"geoCellIdentifier";
-        
-        MAPinAnnotationView *poiAnnotationView = (MAPinAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:geoCellIdentifier];
-        if (poiAnnotationView == nil)
-        {
-            poiAnnotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:geoCellIdentifier];
-            poiAnnotationView.animatesDrop   = YES;
-            poiAnnotationView.canShowCallout = YES;
-        }
-        
-        return poiAnnotationView;
-    }
-    // 数据库保存经纬度的点
-    if ([annotation isKindOfClass:[MAPointAnnotation class]])
-    {
-        static NSString *pointReuseIndetifier = @"pointReuseIndetifier";
-        MAPinAnnotationView *annotationView = (MAPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndetifier];
+        annotationView = (CPCusAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
         if (annotationView == nil)
         {
-            annotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pointReuseIndetifier];
-            annotationView.canShowCallout            = YES;
-            annotationView.animatesDrop              = NO;
-//            annotationView.image = [UIImage imageNamed:CP_RESOURCE_IMAGE_MAP_SELECT_0];
-//            annotationView.centerOffset = CGPointMake(0, -22);
+#warning 这里每次都执行？ 影响效率
+            annotationView = [[CPCusAnnotationView alloc] initWithAnnotation:annotation
+                                                             reuseIdentifier:customReuseIndetifier];
         }
+        
+        GeocodeAnnotation* geocodeAnnotation = annotation;
+        CPPointAnnotation* cpAnnotation = [[CPPointAnnotation alloc] init];
+        cpAnnotation.uuid = nil;
+        cpAnnotation.title = geocodeAnnotation.title;
+        cpAnnotation.subtitle = geocodeAnnotation.subtitle;
+        cpAnnotation.coordinate = geocodeAnnotation.coordinate;
+        cpAnnotation.type = CPPointAnnotationTypeNone;
+        annotationView.cpAnnotation = cpAnnotation;
+        return annotationView;
+    }
+    // 数据库保存经纬度的点
+    if ([annotation isKindOfClass:[CPPointAnnotation class]])
+    {
+        annotationView = (CPCusAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
+        if (annotationView == nil)
+        {
+#warning 这里每次都执行？ 影响效率
+            annotationView = [[CPCusAnnotationView alloc] initWithAnnotation:annotation
+                                                             reuseIdentifier:customReuseIndetifier];
+        }
+        
+        annotationView.cpAnnotation = annotation;
         return annotationView;
     }
     return nil;
@@ -299,10 +340,29 @@
     [self searchTipsWithKey:searchString];
     return NO;
 }
+-(void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller {
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        CGRect statusBarFrame =  [[UIApplication sharedApplication] statusBarFrame];
+        [UIView animateWithDuration:0.25 animations:^{
+            for (UIView *subview in self.view.subviews)
+                subview.transform = CGAffineTransformMakeTranslation(0, statusBarFrame.size.height);
+        }];
+    }
+}
+
+-(void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller {
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        [UIView animateWithDuration:0.25 animations:^{
+            for (UIView *subview in self.view.subviews)
+                subview.transform = CGAffineTransformIdentity;
+        }];
+    }
+}
 #pragma mark - UISearchBarDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     NSString *key = searchBar.text;
-    [self clearAndSearchGeocodeWithKey:key];
+//    [self clearAndSearchGeocodeWithKey:key];
+    [self searchGeocodeWithKey:key];
     [self.searchDisplayController setActive:NO animated:NO];
     self.searchDisplayController.searchBar.placeholder = key;
 }

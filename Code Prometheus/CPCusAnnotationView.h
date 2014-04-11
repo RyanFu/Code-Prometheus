@@ -9,6 +9,7 @@
 #import <MAMapKit/MAMapKit.h>
 
 typedef NS_ENUM(NSInteger, CPPointAnnotationType) {
+    CPPointAnnotationTypeNone,
     CPPointAnnotationTypeFamily,
     CPPointAnnotationTypeCompany
 };
