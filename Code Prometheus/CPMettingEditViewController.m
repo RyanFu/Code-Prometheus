@@ -47,7 +47,7 @@
     [self.meetingContentLayoutView removeConstraint:self.meetingContentLayoutViewHeight];
     self.meetingContentLayoutViewHeight = [NSLayoutConstraint constraintWithItem:self.meetingContentLayoutView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.meetingContentLayoutView.superview attribute:NSLayoutAttributeHeight multiplier:0 constant:priorHeight];
     [self.meetingContentLayoutView addConstraint:self.meetingContentLayoutViewHeight];
-    [self.view setNeedsLayout];
+    [self.view layoutIfNeeded];
     CGRect frame = self.view.frame;
     frame.size.height -= diff;
     self.view.frame = frame;

@@ -383,7 +383,7 @@ static const CGFloat kImageSpacing = 5;
     [self.descriptionLayoutView removeConstraint:self.descriptionLayoutViewHeight];
     self.descriptionLayoutViewHeight = [NSLayoutConstraint constraintWithItem:self.descriptionLayoutView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.descriptionLayoutView.superview attribute:NSLayoutAttributeHeight multiplier:0 constant:priorHeight];
     [self.descriptionLayoutView addConstraint:self.descriptionLayoutViewHeight];
-    [self.view setNeedsLayout];
+    [self.view layoutIfNeeded];
 }
 - (void)growingTextViewDidChange:(HPGrowingTextView *)growingTextView{
     self.policy.cp_description = growingTextView.internalTextView.text;

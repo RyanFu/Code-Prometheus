@@ -342,7 +342,7 @@ static const CGFloat kImageSpacing = 5;
     [self.contentLayoutView removeConstraint:self.contentHeightConstraint];
     self.contentHeightConstraint = [NSLayoutConstraint constraintWithItem:self.contentLayoutView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.contentLayoutView.superview attribute:NSLayoutAttributeHeight multiplier:0 constant:priorHeight];
     [self.contentLayoutView addConstraint:self.contentHeightConstraint];
-    [self.view setNeedsLayout];
+    [self.view layoutIfNeeded];
 }
 - (void)growingTextViewDidChange:(HPGrowingTextView *)growingTextView{
     self.trace.cp_description = growingTextView.internalTextView.text;
