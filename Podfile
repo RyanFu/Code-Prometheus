@@ -29,7 +29,7 @@ pod 'SDWebImage', '3.5.1'
 pod 'MWPhotoBrowser', '1.1.4'
 
 
-pod 'TPKeyboardAvoiding', '1.2.3'
+#pod 'TPKeyboardAvoiding', '1.2.3'
 pod 'ASIHTTPRequest', '1.8.2'
 
 

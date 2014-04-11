@@ -375,7 +375,6 @@ static const CGFloat kImageSpacing = 5;
 #pragma mark - HPGrowingTextViewDelegate
 - (void)growingTextView:(HPGrowingTextView *)growingTextView willChangeHeight:(float)height
 {
-#warning 当输入多行内容时,布局不正确,可能是TPKeyboardAvoidingScrollView的BUG
     // layoutview高度
     float diff = (growingTextView.frame.size.height - height);
     float priorHeight = self.descriptionLayoutView.frame.size.height;
